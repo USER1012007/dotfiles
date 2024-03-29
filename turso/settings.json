@@ -1,0 +1,89 @@
+{
+  "cache": {
+    "closestlocation": {
+      "data": "qro",
+      "expiration": 1707280915
+    },
+    "database_names": {
+      "data": [
+        {
+          "dbid": "492c07ad-c530-11ee-9386-e26d5524e301",
+          "group": "default",
+          "hostname": "right-terror-user1012007.turso.io",
+          "name": "right-terror",
+          "primaryregion": "qro",
+          "regions": [
+            "qro"
+          ],
+          "sleeping": false,
+          "version": "0.22.16"
+        }
+      ],
+      "expiration": 1707330581
+    },
+    "database_token": {
+      "492c07ad-c530-11ee-9386-e26d5524e301": {
+        "expiration": 1707411599,
+        "data": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDc0MTUyMzQsImlhdCI6MTcwNzMyODgzNCwiaWQiOiI0OTJjMDdhZC1jNTMwLTExZWUtOTM4Ni1lMjZkNTUyNGUzMDEifQ.7IzL7LwWksaXsoJ3H0ZhERTSMoDNmzEiLE1X1KQaqWqwAnJZY6zn0kDn-F_0Qr14UZyd4jw6jw8Zc-pVjJ56Ag"
+      }
+    },
+    "groups": {
+      "expiration": 0
+    },
+    "locations": {
+      "data": {
+        "ams": "Amsterdam, Netherlands",
+        "arn": "Stockholm, Sweden",
+        "atl": "Atlanta, Georgia (US)",
+        "bog": "Bogotá, Colombia",
+        "bom": "Mumbai, India",
+        "bos": "Boston, Massachusetts (US)",
+        "cdg": "Paris, France",
+        "den": "Denver, Colorado (US)",
+        "dfw": "Dallas, Texas (US)",
+        "ewr": "Secaucus, NJ (US)",
+        "eze": "Ezeiza, Argentina",
+        "fra": "Frankfurt, Germany",
+        "gdl": "Guadalajara, Mexico",
+        "gig": "Rio de Janeiro, Brazil",
+        "gru": "São Paulo, Brazil",
+        "hkg": "Hong Kong, Hong Kong",
+        "iad": "Ashburn, Virginia (US)",
+        "jnb": "Johannesburg, South Africa",
+        "lax": "Los Angeles, California (US)",
+        "lhr": "London, United Kingdom",
+        "mad": "Madrid, Spain",
+        "mia": "Miami, Florida (US)",
+        "nrt": "Tokyo, Japan",
+        "ord": "Chicago, Illinois (US)",
+        "otp": "Bucharest, Romania",
+        "phx": "Phoenix, Arizona (US)",
+        "qro": "Querétaro, Mexico",
+        "scl": "Santiago, Chile",
+        "sea": "Seattle, Washington (US)",
+        "sin": "Singapore, Singapore",
+        "sjc": "San Jose, California (US)",
+        "syd": "Sydney, Australia",
+        "waw": "Warsaw, Poland",
+        "yul": "Montreal, Canada",
+        "yyz": "Toronto, Canada"
+      },
+      "expiration": 1707280915
+    },
+    "token_valid": {
+      "eyjhbgcioijiuzi1niisinr5cci6ikpxvcj9_eyjlehaioje3mdc4nty3odysimlhdci6mtcwnzi1mtk4niwiawqioje3odi3fq_mpqhxk9w-x6lwusgaxsmkug3m692xljo6-cs4ytykdk": {
+        "data": true,
+        "expiration": 1707856786
+      }
+    }
+  },
+  "config": {
+    "last_update_check": 1707252133
+  },
+  "config-path": "",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDc4NTY3ODYsImlhdCI6MTcwNzI1MTk4NiwiaWQiOjE3ODI3fQ.MPqhXk9W-X6LWUsgAxsMkUG3M692xlJo6-cS4yTYkDk",
+  "usedcommands": {
+    "auth_login": true
+  },
+  "username": "user1012007"
+}
