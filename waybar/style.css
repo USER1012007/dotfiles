@@ -183,6 +183,8 @@ label:focus {
 }
 
 #network {
+  
+    font-family: Cantarell, 'Font awesome 6 Free';
     /* background-color: #a6e3a1; */
     /* color: #000000; */
 }
