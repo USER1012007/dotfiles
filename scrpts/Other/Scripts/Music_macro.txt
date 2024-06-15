@@ -1,0 +1,3 @@
+SelectAll:
+LoudnessNormalization:DualMono="1" LUFSLevel="-20" NormalizeTo="0" RMSLevel="-20" StereoIndependent="0"
+TruncateSilence:Action="Truncate Detected Silence" Compress="50" Independent="1" Minimum="1.5" Threshold="-30" Truncate="0.5"

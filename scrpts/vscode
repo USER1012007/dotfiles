@@ -1,0 +1,1 @@
+code-oss --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-gpu-sandbox --no-sandbox

@@ -1,0 +1,6 @@
+#!/bin/bash
+#
+
+pkexec swayosd-libinput-backend &
+
+dbus-run-session niri --session

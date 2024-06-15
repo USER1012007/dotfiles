@@ -1,0 +1,9 @@
+#!/bin/bash
+
+segundos=0
+
+while true; do
+    printf "\rTiempo transcurrido: %02d:%02d:%02d" $((segundos/3600)) $((segundos%3600/60)) $((segundos%60))
+    sleep 1
+    ((segundos++))
+done
