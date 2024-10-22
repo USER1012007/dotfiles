@@ -1,7 +1,3 @@
-https://maps.app.goo.gl/qQpswq3fy6CD7wer7
-Donde andan?
-Canchas
-WD_BLACK 1TB SN770 NVMe Unidad de Estado sólido Interna para Juegos - Gen4 PCIe, M.2 2280, hasta 5,150 MB/s - WDS100T3X0E https://a.co/d/358R3rz
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -9,48 +5,48 @@ WD_BLACK 1TB SN770 NVMe Unidad de Estado sólido Interna para Juegos - Gen4 PCIe
 { config, pkgs, libs, ... }:
 
 let
-  secondmonitor_script = pkgs.writeShellScriptBin "second_monitor_niri_sh" "
-    bash /usr/local/bin/second_monitor_niri.sh 
-  ";
-  tooglewallpaper_script = pkgs.writeShellScriptBin "toogleWallpaper_sh" "
-    bash /usr/local/bin/toogleWallpaper.sh 
-  ";
-  wallpaper_script = pkgs.writeShellScriptBin "wallpaper_sh" "
-    bash /usr/local/bin/wallpaper.sh 
-  ";
-  startn_script = pkgs.writeShellScriptBin "startn" "
-    bash /usr/local/bin/startn.sh  
-  ";
-  quit_niri_script = pkgs.writeShellScriptBin "quit_niri_sh" "
-    bash /usr/local/bin/quit_niri.sh   
-  ";
-  aagl = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
+  # secondmonitor_script = pkgs.writeShellScriptBin "second_monitor_niri_sh" "
+  #   bash /usr/local/bin/second_monitor_niri.sh 
+  # ";
+  # tooglewallpaper_script = pkgs.writeShellScriptBin "toogleWallpaper_sh" "
+  #   bash /usr/local/bin/toogleWallpaper.sh 
+  # ";
+  # wallpaper_script = pkgs.writeShellScriptBin "wallpaper_sh" "
+  #   bash /usr/local/bin/wallpaper.sh 
+  # ";
+  # startn_script = pkgs.writeShellScriptBin "startn" "
+  #   bash /usr/local/bin/startn.sh  
+  # ";
+  # quit_niri_script = pkgs.writeShellScriptBin "quit_niri_sh" "
+  #   bash /usr/local/bin/quit_niri.sh   
+  # ";
+ #aagl = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      aagl.module
+     #aagl.module
     ];
 
   # Bootloader.
-  boot.kernelParams = [ "i915.force_probe=a7a0" ];
+  #boot.kernelParams = [ "i915.force_probe=a7a0" ];
   boot.kernelModules = [ "nvidia_uvm" ];
-
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  hardware.graphics = {
-    enable = true;
-  };
+   hardware.graphics = {
+     enable = true;
+   };
 
-  hardware.graphics.enable32Bit = true;
-  hardware.pulseaudio.support32Bit = true;
+  #hardware.graphics.enable32Bit = true;
+  #hardware.pulseaudio.support32Bit = true;
 
   hardware.nvidia = {
     modesetting.enable = true;
-    #powerManagment.enable = false;
-    #powerManagment.finegrained = true;
+   #powerManagment.enable = false;
+   #powerManagment.finegrained = true;
     open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
@@ -59,7 +55,7 @@ in
   # Load nvidia driver fpr Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
-  networking.hostName = "1L5-RTX-NIX"; # Define your hostname.
+  networking.hostName = "User1012007"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -84,9 +80,9 @@ in
   virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ale = {
+  users.users.emilio = {
     isNormalUser = true;
-    description = "ale";
+    description = "emilio";
     extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [];
   };
@@ -111,7 +107,7 @@ in
      pipewire
      pavucontrol
      swaybg
-     xwayland-satellite
+    #xwayland-satellite
      htop
      python3
      foot
@@ -134,13 +130,20 @@ in
      mpvpaper
      wofi
      gnome-themes-extra
-     docker
-     docker-compose
-     quit_niri_script
-     startn_script
-     wallpaper_script
-     tooglewallpaper_script
-     secondmonitor_script
+     pkg-config
+     fontconfig
+     kickoff
+     efibootmgr
+     godot_4
+     sqlite
+     sqlite-web
+    #docker
+    #docker-compose
+    #quit_niri_script
+    #startn_script
+    #wallpaper_script
+    #tooglewallpaper_script
+    #secondmonitor_script
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
@@ -246,8 +249,9 @@ in
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
   
+ #PS1='\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ '
   # Definir PROMPT_COMMAND en NixOS
-  programs.bash.promptInit = ''
-    PS1='[\[\e[92m\]\u\[\e[0m\]@\[\e[95m\]\h\[\e[0m\] \[\e[96m\]\w\[\e[0m\]]\\$ '
-  '';
+  #programs.bash.promptInit = ''
+  # '[ -n "$PS1" ] && PS1="\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ "; '
+  #'';
 }
