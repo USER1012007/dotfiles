@@ -83,7 +83,7 @@ in
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio"];
     packages = with pkgs; [];
   };
 
@@ -101,13 +101,14 @@ in
      git
      niri
      neovim
+     fastfetch
      firefox
      xfce.thunar
      xfce.thunar-volman
      pipewire
      pavucontrol
      swaybg
-    #xwayland-satellite
+     xwayland-satellite
      htop
      python3
      foot
@@ -116,7 +117,7 @@ in
      cargo
      wl-clipboard
      gvfs
-     xorg.xeyes
+     # xorg.xeyes
      qalculate-gtk
      libreoffice
      localsend
@@ -127,8 +128,7 @@ in
      waybar
      mpv
      openjdk
-     mpvpaper
-     wofi
+     # mpvpaper
      gnome-themes-extra
      pkg-config
      fontconfig
@@ -137,16 +137,25 @@ in
      godot_4
      sqlite
      sqlite-web
-    #docker
-    #docker-compose
-    #quit_niri_script
-    #startn_script
-    #wallpaper_script
-    #tooglewallpaper_script
-    #secondmonitor_script
+     php
+     apacheHttpd
+     swayosd
+     # arduino-ide
+     gparted
+     nomacs
+     waylock
+     gcc
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
+
+  services.httpd.enable = true;
+  services.httpd.enablePHP = true; 
+  services.httpd.virtualHosts."localhost" = {
+    documentRoot = "/home/emilio/public_html";
+    enableUserDir = true; 
+    serverAliases = [ "localhost" ]; 
+  };
 
   fonts.packages = with pkgs; [
     fira-code
