@@ -35,6 +35,8 @@ in
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.opengl.enable = true;
+
   
   hardware.graphics = {
     enable = true;
@@ -77,13 +79,12 @@ in
     variant = "";
   };
 
-  virtualisation.docker.enable = true;
-
+  # virtualisation.docker.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio"];
+    extraGroups = [ "networkmanager" "wheel" "audio"];
     packages = with pkgs; [];
   };
 
@@ -92,6 +93,10 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+
+# Steam configurations
+
+  programs.steam.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -141,28 +146,47 @@ in
      arduino-ide
      gparted
      nomacs
-     waylock
+     swaylock
      gcc
      nodejs_22
      appimage-run
      linux-wifi-hotspot
      localsend
-     transmission_4-gtk
+     bluez
+     # mysql-workbench
+     lazygit
+     grim
+     imagemagick
+     kotlin
+     android-studio
+     amdvlk
+     flutter
+     libGLU
+     curl
+     android-tools
+     hashcat
+     nethogs
+     # vnstat
+     # ghostty
+     # obs-studio
+     # transmission_4-gtk
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
   services.httpd = {
     enable = true;
     adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
-    # listenAddresses = [ "127.0.0.1" ];    # Escuchar solo en localhost
     enablePHP = true;
     extraModules = [ "php" ];            # Habilita el módulo PHP
-    # documentRoot = "/var/www/html/";            # Directorio de documentos
   };
   services.httpd.virtualHosts."localhost" = {
     documentRoot = "/var/www/html";
     enableUserDir = true; 
     serverAliases = [ "localhost" ]; 
+  };
+
+  services.vnstat = {
+    enable = true; # Habilita el servicio vnstat
   };
 
   fonts.packages = with pkgs; [
@@ -172,7 +196,7 @@ in
     liberation_ttf
     dejavu_fonts
     font-awesome
-    nerdfonts
+    nerd-fonts.caskaydia-mono
   ];
 
   environment.etc."polkit-1/rules.d/10-nixos.rules".text = ''
