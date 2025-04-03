@@ -28,16 +28,22 @@ in
       ./hardware-configuration.nix
      #aagl.module
     ];
-
+  hardware.bluetooth.enable = true; # enables support for bluetooth
+  hardware.bluetooth.powerOnBoot = false; # powers up the default Bluetooth controller on boot
   # Bootloader.
   #boot.kernelParams = [ "i915.force_probe=a7a0" ];
   boot.kernelModules = [ "nvidia_uvm" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  hardware.opengl.enable = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    useOSProber = true;
+    efiSupport = true;
+    default = "saved";
+    device = "nodev";
+  };
 
-  
   hardware.graphics = {
     enable = true;
   };
@@ -153,7 +159,6 @@ in
      linux-wifi-hotspot
      localsend
      bluez
-     # mysql-workbench
      lazygit
      grim
      imagemagick
@@ -164,12 +169,18 @@ in
      libGLU
      curl
      android-tools
-     hashcat
      nethogs
+     yazi
+     pdf4qt
+     gapless
+     vimPlugins.lazygit-nvim
+     vimPlugins.plenary-nvim
+     wireshark
+     exiftool
      # vnstat
      # ghostty
      # obs-studio
-     # transmission_4-gtk
+     transmission_4-gtk
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   ];
