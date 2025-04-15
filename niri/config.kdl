@@ -292,7 +292,7 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "waybar"
 spawn-at-startup "swayosd-server"
-spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/tsukaza.jpg"
+spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "xwayland-satellite"
 // You can override environment variables for processes spawned by niri.
 environment {
