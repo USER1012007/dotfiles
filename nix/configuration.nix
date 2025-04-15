@@ -37,10 +37,8 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub = {
-    enable = true;
+    # enable = true;
     useOSProber = true;
-    efiSupport = true;
-    default = "saved";
     device = "nodev";
   };
 
@@ -48,6 +46,7 @@ in
     enable = true;
   };
 
+  hardware.opengl.enable = true;
   #hardware.graphics.enable32Bit = true;
   #hardware.pulseaudio.support32Bit = true;
 
@@ -134,7 +133,6 @@ in
      localsend
      appimage-run
      steam
-     sway
      waybar
      mpv
      openjdk
@@ -146,8 +144,6 @@ in
      godot_4
      sqlite
      sqlite-web
-     php
-     apacheHttpd
      swayosd
      arduino-ide
      gparted
@@ -155,9 +151,7 @@ in
      swaylock
      gcc
      nodejs_22
-     appimage-run
      linux-wifi-hotspot
-     localsend
      bluez
      lazygit
      grim
@@ -171,18 +165,12 @@ in
      android-tools
      nethogs
      yazi
-     pdf4qt
      gapless
      vimPlugins.lazygit-nvim
      vimPlugins.plenary-nvim
      wireshark
-     exiftool
-     # vnstat
-     # ghostty
-     # obs-studio
      transmission_4-gtk
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+     os-prober
   ];
   services.httpd = {
     enable = true;
