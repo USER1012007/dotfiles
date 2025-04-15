@@ -199,16 +199,14 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-         off
-
+         
+        //off
         // How many logical pixels the ring extends out from the windows.
-        width 4
-
+        width 2
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
         // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
-
         // Color of the ring on the active monitor.
         active-color "#7fc8ff"
 
@@ -221,7 +219,7 @@ layout {
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
         // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
+        //// defaulting to 180 (top-to-bottom gradient).
         // You can use any CSS linear-gradient tool on the web to set these up.
         //
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
@@ -237,14 +235,13 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
-
-        // width 4
-        // active-color "#ffc87f"
-        // inactive-color "#505050"
-
-        // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+          off
+           width 2
+           active-color "#7fc8ff"
+           inactive-color "#505050"
+        //  active-gradient from="#225577" to="#7fc8ff" angle=45 in="oklch longer hue"
+        //  active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
+        //  inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -266,7 +263,7 @@ layout {
     // default-column-width {}
 
     // Set gaps around windows in logical pixels.
-    gaps 0
+    gaps 5
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
     // You can think of them as a kind of outer gaps. They are set in logical pixels.
@@ -295,14 +292,15 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "waybar"
 spawn-at-startup "swayosd-server"
-spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/background9.jpg" 
+spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/tsukaza.jpg"
+spawn-at-startup "xwayland-satellite"
 // You can override environment variables for processes spawned by niri.
 environment {
     // Set a variable like this:
     // QT_QPA_PLATFORM "wayland"
 
     // Remove a variable by using null as the value:
-    // DISPLAY null
+  DISPLAY ":0"
 }
 
 cursor {
@@ -320,7 +318,7 @@ cursor {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -336,6 +334,65 @@ animations {
     // Uncomment to turn off all animations.
     // off
 
+
+    window-close {
+ 
+
+    duration-ms 300
+ 
+
+        custom-shader r"
+ 
+
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+ 
+
+            float progress = niri_clamped_progress * niri_clamped_progress;
+ 
+
+            vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+ 
+
+            coords.y -= progress * 200.0;
+ 
+
+            float random = (niri_random_seed - 0.5) / 2.0;
+ 
+
+            random = sign(random) - random;
+ 
+
+            float max_angle = 0.05 * random;
+ 
+
+            float angle = progress * max_angle;
+ 
+
+            mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+ 
+
+            coords = rotate * coords;
+ 
+
+            coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+ 
+
+            vec3 coords_tex = niri_geo_to_tex * coords_geo;
+ 
+
+            vec4 color = texture2D(niri_tex, coords_tex.st);
+ 
+
+            return color * (1.0 - niri_clamped_progress);
+ 
+
+            }
+ 
+
+        "
+ 
+
+    }
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
 
@@ -487,6 +544,7 @@ window-rule {
     default-column-width {}
 }
 
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -504,7 +562,8 @@ binds {
     XF86MonBrightnessUp   { spawn  "swayosd-client" "--brightness" "raise"; }
     Ctrl+Shift+return     { spawn  "gammastep" "-O" "3500";}
     Ctrl+return           { spawn  "pkill" "gammastep";}
-    Alt+Shift+L           { spawn  "swaylock" "-c" "222222";}
+    //Alt+Shift+L           { spawn  "swaylock" "-c" "222222";}
+    Alt+Shift+L           { spawn  "bash" "/home/emilio/.local/bin/swaylock-desktop-image.sh";}
 
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
@@ -527,6 +586,7 @@ binds {
     XF86AudioPrev        { spawn "playerctl" "previous"; }
 
     Alt+Shift+C { close-window; }
+    Shift_L { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
