@@ -110,7 +110,6 @@ in
      ]))
      git
      niri
-     vim
      neovim
      fastfetch
      firefox
@@ -169,18 +168,132 @@ in
      vimPlugins.lazygit-nvim
      vimPlugins.plenary-nvim
      wireshark
-     transmission_4-gtk
-     os-prober
+     gammastep
+     # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
   ];
-  services.httpd = {
-    enable = true;
-    adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
-    enablePHP = true;
-    extraModules = [ "php" ];            # Habilita el módulo PHP
+  # services.httpd = {
+  #   enable = true;
+  #   adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
+  #   enablePHP = true;
+  #   extraModules = [ "php" ];            # Habilita el módulo PHP
+  # };
+  # services.httpd.virtualHosts."localhost" = {
+  #   documentRoot = "/var/www/html";
+  #   enableUserDir = true; 
+  #   serverAliases = [ "localhost" ]; 
+  # };
+  #
+  services.vnstat = {
+    enable = true; # Habilita el servicio vnstat
   };
-  services.httpd.virtualHosts."localhost" = {
-    documentRoot = "/var/www/html";
-    enableUserDir = true; 
+
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    noto-fonts
+    liberation_ttf
+    dejavu_fonts
+    font-awesome
+    nerd-fonts.caskaydia-mono
+  ];
+
+  environment.etc."polkit-1/rules.d/10-nixos.rules".text = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.policykit.exec" &&
+          subject.isInGroup("wheel")) {
+          return polkit.Result.YES;
+      }
+    });
+  '';
+
+  security.pam.services.swaylock = {};
+  # services.printing.enable = true;
+  #services.printing.drivers = [ pkgs.epson-escpr2 ];
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+  xdg.portal.config.common.default = "*";
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+    ];
+  };
+
+  services.gvfs.enable = true;
+  services.flatpak.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+  };
+
+  services.pipewire.wireplumber.extraConfig."10-bluez" = {
+    "monitor.bluez.properties" = {
+      "bluez5.enable-sbc-xq" = true;
+      "bluez5.enable-msbc" = true;
+      "bluez5.enable-hw-volume" = true;
+      "bluez5.headset-roles" = [
+        "hsp_hs"
+        "hsp_ag"
+        "hfp_hf"
+        "hfp_ag"
+      ];
+    };
+  };
+
+  # Open ports in the firewall.
+  networking.firewall.allowedTCPPorts = [
+    58396
+    631
+    53317
+  ];
+  networking.firewall.allowedUDPPorts = [
+    631
+    53317
+  ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.05"; # Did you read the comment?
+  
+ #PS1='\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ '
+  # Definir PROMPT_COMMAND en NixOS
+  #programs.bash.promptInit = ''
+  # '[ -n "$PS1" ] && PS1="\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ "; '
+  #'';
+}
     serverAliases = [ "localhost" ]; 
   };
 
