@@ -110,7 +110,6 @@ in
      ]))
      git
      niri
-     neovim
      fastfetch
      firefox
      xfce.thunar
@@ -137,40 +136,50 @@ in
      pkg-config
      fontconfig
      kickoff
-     efibootmgr
-     godot_4
-     sqlite
-     sqlite-web
      swayosd
-     arduino-ide
-     gparted
      nomacs
      swaylock
      gcc
-     nodejs_22
      linux-wifi-hotspot
      bluez
      lazygit
      grim
      imagemagick
-     kotlin
-     android-studio
      amdvlk
-     flutter
      libGLU
      curl
-     android-tools
      nethogs
      yazi
      gapless
-     vimPlugins.lazygit-nvim
-     vimPlugins.plenary-nvim
-     wireshark
      gammastep
      pwvucontrol
      waypaper
      swww
+
+     # IDE's
+     android-tools
+     neovim
+     godot_4
+
+     # vim plugins
+     vimPlugins.lazygit-nvim
+     vimPlugins.plenary-nvim
      vimPlugins.vim-visual-multi
+
+     # Language servers
+     # sqlite
+     # sqlite-web
+     # nodejs_22
+     # kotlin
+     # flutter
+
+     # dependencies for nvchad
+     unzip
+     wl-mirror
+     rsync
+     _7zz
+     gnupg
+     pinentry-tty
      # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
   ];
   # services.httpd = {
