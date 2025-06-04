@@ -34,6 +34,10 @@ in
   #boot.kernelParams = [ "i915.force_probe=a7a0" ];
   boot.kernelModules = [ "nvidia_uvm" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [
+    "nowatchdog"
+    "preempt=full"
+  ];
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.grub = {

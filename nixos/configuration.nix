@@ -98,10 +98,9 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-
 # Steam configurations
-
   programs.steam.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -180,23 +179,21 @@ in
      _7zz
      gnupg
      pinentry-tty
+
+     # Flatpak programs scripts
+       (writeShellScriptBin "bedrock" ''
+
+        #!/bin/bash
+
+        flatpak run io.mrarm.mcpelauncher
+
+      '') 
      # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
   ];
-  # services.httpd = {
-  #   enable = true;
-  #   adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
-  #   enablePHP = true;
-  #   extraModules = [ "php" ];            # Habilita el módulo PHP
+
+  # services.vnstat = {
+  #   enable = true; # Habilita el servicio vnstat
   # };
-  # services.httpd.virtualHosts."localhost" = {
-  #   documentRoot = "/var/www/html";
-  #   enableUserDir = true; 
-  #   serverAliases = [ "localhost" ]; 
-  # };
-  #
-  services.vnstat = {
-    enable = true; # Habilita el servicio vnstat
-  };
 
   fonts.packages = with pkgs; [
     fira-code
