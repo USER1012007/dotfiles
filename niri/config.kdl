@@ -292,7 +292,9 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "waybar"
 spawn-at-startup "swayosd-server"
-spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/astro.jpg"
+// spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/astro.jpg"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww" "img" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "xwayland-satellite"
 // You can override environment variables for processes spawned by niri.
 environment {
@@ -544,6 +546,20 @@ window-rule {
     default-column-width {}
 }
 
+window-rule {
+  match app-id="waypaper"
+  open-floating true
+}
+
+window-rule {
+  match app-id="qalculate-gtk"
+  open-floating true
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -556,16 +572,14 @@ binds {
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
     
-    //Personal commands
-    Alt+R                 { spawn  "zenity" "--color-selection" "|" "wl-copy"; } 
     XF86MonBrightnessDown { spawn  "swayosd-client" "--brightness" "lower"; }
     XF86MonBrightnessUp   { spawn  "swayosd-client" "--brightness" "raise"; }
-    Ctrl+Shift+return     { spawn  "gammastep" "-O" "3500";}
-    Ctrl+return           { spawn  "pkill" "gammastep";}
-    //Alt+Shift+L           { spawn  "swaylock" "-c" "222222";}
+    Mod+Shift+return     { spawn  "gammastep" "-O" "3499";}
+    Mod+return           { spawn  "pkill" "gammastep";}
+   //Alt+Shift+L           { spawn  "swaylock" "-c" "222222";}
     Alt+Shift+L           { spawn  "bash" "/home/emilio/.local/bin/swaylock-desktop-image.sh";}
+    Mod+Shift+W { toggle-column-tabbed-display; }
 
-    // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash  { show-hotkey-overlay; }
 
@@ -573,7 +587,9 @@ binds {
     Alt+Shift+return { spawn "foot"; }
     Alt+P            { spawn "kickoff"; }
     Super+Alt+L      { spawn "swaylock"; }
-
+    Alt+O            { spawn "waypaper"; }
+    Mod+Escape repeat=false { toggle-overview; }
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
@@ -584,6 +600,9 @@ binds {
     XF86AudioPlay        { spawn "playerctl" "play-pause"; }       
     XF86AudioNext        { spawn "playerctl" "next"; }
     XF86AudioPrev        { spawn "playerctl" "previous"; }
+
+    Mod+TouchpadScrollDown { spawn "swayosd-client" "--output-volume"  "lower"; }
+    Mod+TouchpadScrollUp   { spawn "swayosd-client" "--output-volume"  "raise"; }
 
     Alt+Shift+C { close-window; }
     Shift_L { close-window; }
@@ -693,8 +712,9 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-     Alt+Tab { focus-workspace-previous; }
-
+    Alt+Tab { focus-workspace-previous; }
+    Mod+Shift+V { toggle-window-floating; }
+    Mod+V { switch-focus-between-floating-and-tiling; }
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
