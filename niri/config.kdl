@@ -27,7 +27,7 @@ input {
     // Omitting settings disables them, or leaves them at their default values.
     touchpad {
         tap
-        // dwt
+        dwt
         // dwtp
         natural-scroll
         // accel-speed 0.2
