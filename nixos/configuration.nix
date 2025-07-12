@@ -1,6 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+# command to active unstable packages
+# nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 
 { config, pkgs, libs, ... }:
  
@@ -178,11 +180,8 @@ programs.xwayland.enable = true;
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
-
         #!/bin/bash
-
-        flatpak run io.mrarm.mcpelauncher
-
+        flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia io.mrarm.mcpelauncher
       '') 
      # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
   ];
