@@ -1,0 +1,25 @@
+[opener]
+edit = [
+	{ run = 'foot nvim "$@"', block = false, for = "unix" },
+]
+
+open = [
+	{ run = 'libreoffice "$@"', block = false, desc = "Open pdf" },
+]
+
+view = [
+  { run = 'nomacs "$@"', desc = "Open image"},
+]
+
+appimage = [
+  { run = 'appimage-run "$@"', desc = "Open Appimage"}
+]
+[open]
+prepend_rules = [
+	{ name = "*.pdf", use = "open" },
+	{ name = "*.png", use = "view" },
+	{ name = "*.jpg", use = "view" },
+	{ name = "*.jpeg", use = "view" },
+	{ name = "*.webp", use = "view" },
+	{ name = "*.AppImage", use = "appimage" },
+]

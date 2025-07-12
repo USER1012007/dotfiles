@@ -3,24 +3,15 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, libs, ... }:
-
+ 
 let
   # secondmonitor_script = pkgs.writeShellScriptBin "second_monitor_niri_sh" "
   #   bash /usr/local/bin/second_monitor_niri.sh 
   # ";
-  # tooglewallpaper_script = pkgs.writeShellScriptBin "toogleWallpaper_sh" "
-  #   bash /usr/local/bin/toogleWallpaper.sh 
-  # ";
-  # wallpaper_script = pkgs.writeShellScriptBin "wallpaper_sh" "
-  #   bash /usr/local/bin/wallpaper.sh 
-  # ";
-  # startn_script = pkgs.writeShellScriptBin "startn" "
-  #   bash /usr/local/bin/startn.sh  
-  # ";
-  # quit_niri_script = pkgs.writeShellScriptBin "quit_niri_sh" "
-  #   bash /usr/local/bin/quit_niri.sh   
-  # ";
- #aagl = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
+  #aagl = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
+  ciscoPacketTracer = pkgs.ciscoPacketTracer8.overrideAttrs (oldAttrs: {
+    src = /home/emilio/packettracer/CiscoPacketTracer822_amd64_signed.deb;
+  });
 in
 {
   imports =
@@ -31,7 +22,6 @@ in
   hardware.bluetooth.enable = true; # enables support for bluetooth
   hardware.bluetooth.powerOnBoot = false; # powers up the default Bluetooth controller on boot
   # Bootloader.
-  #boot.kernelParams = [ "i915.force_probe=a7a0" ];
   boot.kernelModules = [ "nvidia_uvm" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.efi.canTouchEfiVariables = true;
@@ -47,6 +37,7 @@ in
   };
 
   hardware.opengl.enable = true;
+
   #hardware.graphics.enable32Bit = true;
   #hardware.pulseaudio.support32Bit = true;
 
@@ -62,7 +53,7 @@ in
   # Load nvidia driver fpr Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
-  networking.hostName = "User1012007"; # Define your hostname.
+  networking.hostName = "user1012007"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -95,14 +86,18 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+     "libxml2-2.13.8"
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 # Steam configurations
   programs.steam.enable = true;
 
+programs.xwayland.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
   environment.systemPackages = with pkgs; [
      (pkgs.python3.withPackages (python-pkgs: [
       python-pkgs.psutil
@@ -124,10 +119,10 @@ in
      wl-clipboard
      gvfs
      qalculate-gtk
-     libreoffice
+#    libreoffice
      localsend
      appimage-run
-     steam
+#    steam
      waybar
      mpv
      openjdk
@@ -156,9 +151,9 @@ in
      swww
 
      # IDE's
-     android-tools
+#    android-tools
      neovim
-     godot_4
+#    godot_4
 
      # vim plugins
      vimPlugins.lazygit-nvim
@@ -171,6 +166,7 @@ in
      # nodejs_22
      # kotlin
      # flutter
+      ciscoPacketTracer 
 
      # dependencies for nvchad
      unzip
