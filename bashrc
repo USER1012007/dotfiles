@@ -13,7 +13,6 @@ alias tiempo='curl wttr.in/corregidora'
 alias snvim='sudo -E nvim'
 alias check='ping www.google.com'
 alias quit='exit'
-alias back='cd $buffer'
 
 PS1='[\u@\h \W]\$ '
 PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\[\e[38;5;51m\][\u@\h][\W]{${PS1_CMD1}}\$ \[\e[0m\]'
