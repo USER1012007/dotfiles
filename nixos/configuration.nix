@@ -10,7 +10,6 @@ let
   # secondmonitor_script = pkgs.writeShellScriptBin "second_monitor_niri_sh" "
   #   bash /usr/local/bin/second_monitor_niri.sh 
   # ";
-  #aagl = import (builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz");
   ciscoPacketTracer = pkgs.ciscoPacketTracer8.overrideAttrs (oldAttrs: {
     src = /home/emilio/packettracer/CiscoPacketTracer822_amd64_signed.deb;
   });
