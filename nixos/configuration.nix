@@ -32,10 +32,10 @@ in
     device = "nodev";
   };
 
-boot.loader.gummiboot = {
-  enable = true;
-  timeout = 3; # in seconds
-};
+  boot.loader.gummiboot = {
+    enable = true;
+    timeout = 3;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -115,11 +115,8 @@ boot.loader.gummiboot = {
      pipewire
      xwayland-satellite
      htop
-     python3
      foot
      clang
-     rustc
-     cargo
      wl-clipboard
      gvfs
      qalculate-gtk
@@ -163,6 +160,7 @@ boot.loader.gummiboot = {
      vimPlugins.lazygit-nvim
      vimPlugins.plenary-nvim
      vimPlugins.vim-visual-multi
+     vimPlugins.neoformat
 
      # Language servers
      # sqlite
@@ -170,7 +168,12 @@ boot.loader.gummiboot = {
      # nodejs_22
      # kotlin
      # flutter
-      ciscoPacketTracer 
+     # rustc
+     # cargo
+     ciscoPacketTracer 
+     python3
+     clang-tools
+     lua-language-server
 
      # dependencies for nvchad
      unzip
