@@ -158,10 +158,11 @@ in
      pwvucontrol
      waypaper
      swww
-
+    
      # IDE's
 #    android-tools
      neovim
+     obsidian
 #    godot_4
 
      # vim plugins
@@ -171,9 +172,10 @@ in
      vimPlugins.neoformat
 
      # Language servers
-     # sqlite
-     # sqlite-web
-     # nodejs_22
+     sqlite
+     sqlite-web
+     nodejs_24
+     php
      # kotlin
      # flutter
      # rustc
@@ -197,10 +199,11 @@ in
         flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia io.mrarm.mcpelauncher
       '') 
 
-       (writeShellScriptBin "packettracer" ''
+       (writeShellScriptBin "jellyfin" ''
         #!/bin/bash
-        ciscoPacketTracer
+        flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia com.github.iwalton3.jellyfin-media-player
       '') 
+
      # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
   ];
 
