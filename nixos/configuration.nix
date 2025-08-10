@@ -158,7 +158,6 @@ in
      pwvucontrol
      waypaper
      swww
-    
      # IDE's
 #    android-tools
      neovim
@@ -285,16 +284,31 @@ in
     };
   };
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [
-    58396
-    631
-    53317
-  ];
-  networking.firewall.allowedUDPPorts = [
-    631
-    53317
-  ];
+  networking.firewall = {
+    enable = true;
+
+    # No open ports to the internet by default
+    allowedTCPPorts = [ ];
+    allowedUDPPorts = [ ];
+    
+    # Allow addresses to conect into specific ports
+    # allowedTCPConnections = [
+    #   {
+    #     port = 22;
+    #     sourceAddress = "192.168.1.100";
+    #   }
+    # ];
+
+    # Allow Avahi/mDNS only on local Wi-Fi
+    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 ];
+
+    # Optional: disable responding to ping from WAN
+    allowPing = false;
+
+    # Optional: log blocked packets for review
+    logRefusedConnections = true;
+  };
+
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
