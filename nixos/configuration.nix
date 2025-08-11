@@ -158,10 +158,12 @@ in
      pwvucontrol
      waypaper
      swww
+
      # IDE's
 #    android-tools
      neovim
      obsidian
+     zed-editor
 #    godot_4
 
      # vim plugins
@@ -301,6 +303,7 @@ in
 
     # Allow Avahi/mDNS only on local Wi-Fi
     interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 ];
+    interfaces."wlp4s0".allowedTCPPorts = [  ];
 
     # Optional: disable responding to ping from WAN
     allowPing = false;
