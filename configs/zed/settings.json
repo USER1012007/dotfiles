@@ -59,8 +59,13 @@
   },
   "theme": {
     "dark": "Custom 1 Dark",
-    "light": "One Light",
+    "light": "Ayu Dark",
     "mode": "system"
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Frappé",
+    "dark": "Catppuccin Frappé"
   },
   "ui_font_size": 16,
   "vim_mode": true
