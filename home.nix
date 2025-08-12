@@ -1,0 +1,272 @@
+{ config, pkgs, ... }:
+let
+  yazi-flavors = pkgs.fetchFromGitHub {
+    owner = "yazi-rs";
+    repo = "flavors";
+    rev = "68326b4ca4b5b66da3d4a4cce3050e5e950aade5";
+    hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
+  };
+in
+{
+
+  home.stateVersion = "25.05";
+  home.username = "emilio";
+  home.homeDirectory = "/home/emilio";
+
+  # Programs
+  programs.bash.enable = true;
+  programs.foot.enable = true;
+  programs.mpv.enable = true;
+  programs.zed-editor.enable = true;
+  programs.yazi.enable = true;
+  gtk.enable = true;
+  services.swayosd.enable = true;
+
+  # Configs
+  programs.git = {
+    enable = true;
+    userName = "User1012007";
+    userEmail = "rojasbadilloe@gmail.com";
+  };
+
+  programs.foot.settings = {
+    main = {
+      font = "CaskaydiaMonoNerdFont:size=14";
+      dpi-aware = false;
+    };
+    colors = {
+      alpha = 0.7;
+      background = "000000";
+      foreground = "FFFFFF";
+      ## Normal/regular colors (color palette 0-7)
+      regular0 = "000000"; # black
+      regular1 = "cd0000"; # red
+      regular2 = "00cd00"; # green
+      regular3 = "cdcd00"; # yellow
+      regular4 = "0000ee"; # blue
+      regular5 = "cd00cd"; # magenta
+      regular6 = "00cdcd"; # cyan
+      regular7 = "e5e5e5"; # white
+
+      ## Bright colors (color palette 8-15)
+      bright0 = "7f7f7f"; # bright black
+      bright1 = "ff0000"; # bright red
+      bright2 = "00ff00"; # bright green
+      bright3 = "ffff00"; # bright yellow
+      bright4 = "5c5cff"; # bright blue
+      bright5 = "ff00ff"; # bright magenta
+      bright6 = "00ffff"; # bright cyan
+      bright7 = "ffffff"; # bright white
+    };
+  };
+
+  programs.zed-editor = {
+    extensions = [
+      "log"
+      "nix"
+      "basher"
+      "typst"
+    ];
+    userKeymaps = builtins.fromJSON (builtins.readFile ./configs/zed/keymap.json);
+    userSettings = builtins.fromJSON (builtins.readFile ./configs/zed/settings.json);
+    extraPackages = with pkgs; [
+      nil
+      nixfmt-rfc-style
+      tinymist
+      typstyle
+      clang-tools
+      python313Packages.python-lsp-server
+      python313Packages.pylint
+    ];
+  };
+
+  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
+  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
+  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
+
+  programs.yazi = {
+    plugins = {
+      mount = pkgs.yaziPlugins.mount;
+      ouch = pkgs.yaziPlugins.ouch;
+    };
+    flavors = {
+      catppuccin-mocha = "${yazi-flavors}/catppuccin-mocha.yazi";
+    };
+    keymap = {
+      mgr.prepend_keymap = [
+        {
+          on = "M";
+          run = "plugin mount";
+          desc = "Open mount plugin";
+        }
+        {
+          on = "<S-j>";
+          run = "arrow 5";
+          desc = "Move cursor down 5 positions";
+        }
+        {
+          on = "<S-k>";
+          run = "arrow -5";
+          desc = "Move cursor up 5 positions";
+        }
+        {
+          on = [ "<C-n>" ];
+          run = "shell 'ripdrag \"$@\" -dx 2>/dev/null &' --confirm";
+        }
+        {
+          on = "C";
+          run = "plugin ouch";
+          desc = "Compress with ouch";
+        }
+      ];
+    };
+    settings = {
+      opener = {
+        play = [
+          {
+            run = "mpv \"$@\"";
+            orphan = true;
+            for = "unix";
+          }
+        ];
+        edit = [
+          {
+            run = "nvim \"$@\"";
+            block = true;
+            for = "unix";
+          }
+        ];
+        open = [
+          {
+            run = "xdg-open \"$@\"";
+            desc = "Open";
+          }
+        ];
+        extract = [
+          {
+            run = "ouch d -y \"$@\"";
+            desc = "Extract here with ouch";
+            for = "unix";
+          }
+        ];
+      };
+      open = {
+        prepend_rules = [
+          {
+            name = "*.zip";
+            use = "extract";
+          }
+        ];
+      };
+      plugin = {
+        prepend_previewers = [
+          {
+            mime = "application/*zip";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-tar";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-bzip2";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-7z-compressed";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-rar";
+            run = "ouch";
+          }
+          {
+            mime = "application/x-xz";
+            run = "ouch";
+          }
+          {
+            mime = "application/xz";
+            run = "ouch";
+          }
+        ];
+      };
+    };
+    theme = {
+      flavor = {
+        dark = "catppuccin-mocha";
+      };
+    };
+  };
+
+  gtk.gtk3.extraConfig = {
+    gtk-icon-theme-name = "Adwaita";
+    gtk-theme-name = "Adwaita-dark";
+    gtk-application-prefer-dark-theme = 1;
+    gtk-cursor-theme-name = "macOS";
+  };
+  gtk.gtk4.extraConfig = {
+    gtk-icon-theme-name = "Adwaita";
+    gtk-theme-name = "Adwaita-dark";
+    gtk-application-prefer-dark-theme = 1;
+    gtk-cursor-theme-name = "macOS";
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
+  };
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".source =
+    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
+      {
+        General.theme = "KvAdaptaDark";
+      };
+
+  programs.mpv.config = {
+    hwdec = "vaapi";
+    hwdec-codecs = "all";
+    gpu-api = "opengl";
+  };
+
+  xdg.configFile."Thunar/uca.xml".source = ./configs/thunar.uca.xml;
+  xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
+
+  programs.bash = {
+
+    # Aliases
+    shellAliases = {
+      ls = "ls --color=auto";
+      grep = "grep --color=auto";
+      off = "systemctl poweroff";
+      # reboot = "systemctl reboot"; # si quieres activarlo, quita el comentario
+      myip = "ip a | grep '/24' | awk '{print $2}' | sed 's/\\/24//'";
+      cli = "cli-visualizer";
+      tiempo = "curl wttr.in/corregidora";
+      snvim = "sudo -E nvim";
+      check = "ping www.google.com";
+      quit = "exit";
+      back = "cd $buffer";
+      hotspot = "sudo create_ap wlp4s0 enp3s0 sipo sipo1234";
+    };
+
+    # Variables de entorno
+    sessionVariables = {
+      MOZ_ENABLE_WAYLAND = "1";
+      PATH = "/home/emilio/.cargo/bin:/home/emilio/.config/herd-lite/bin:$PATH";
+      PHP_INI_SCAN_DIR = "/home/emilio/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
+      GPG_TTY = "$(tty)";
+      DISPLAY = ":0";
+    };
+
+    # Config extra que no es alias ni env var
+    bashrcExtra = ''
+      # Prompt con nombre de branch git
+      PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'
+      PS1='\[\e[38;5;51m\][\u@\h][\W]{''${PS1_CMD1}}\$ \[\e[0m\]'
+    '';
+  };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+}
