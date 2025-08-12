@@ -44,10 +44,14 @@ in
   boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.cleanTmpDir = true;
 
-  hardware.graphics = {
-    enable = true;
-  };
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
+
+    hardware.graphics = {
+      enable = true;
+    };
 
   hardware.opengl.enable = true;
   #hardware.graphics.enable32Bit = true;
@@ -158,6 +162,9 @@ in
      pwvucontrol
      waypaper
      swww
+     eww
+     jq
+     jaq
 
      # IDE's
 #    android-tools

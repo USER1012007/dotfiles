@@ -291,9 +291,9 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "waybar"
+spawn-at-startup "eww" "daemon"
+spawn-at-startup "sh" "-c" "$HOME/.config/eww/scripts/multimonitor.sh"
 spawn-at-startup "swayosd-server"
-// spawn-at-startup "swaybg" "-i" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "swww" "img" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "xwayland-satellite"
