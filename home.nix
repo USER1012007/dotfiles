@@ -11,7 +11,7 @@ in
 
   home.stateVersion = "25.05";
   home.username = "emilio";
-  home.homeDirectory = "/home/emilio";
+  home.homeDirectory = "/home/${config.home.username}";
 
   # Programs
   programs.bash.enable = true;
@@ -65,30 +65,28 @@ in
     };
   };
 
-  programs.zed-editor = {
-    extensions = [
-      "log"
-      "nix"
-      "basher"
-      "typst"
-    ];
-    userKeymaps = builtins.fromJSON (builtins.readFile ./configs/zed/keymap.json);
-    userSettings = builtins.fromJSON (builtins.readFile ./configs/zed/settings.json);
-    extraPackages = with pkgs; [
-      nil
-      nixfmt-rfc-style
-      tinymist
-      typstyle
-      clang-tools
-      python313Packages.python-lsp-server
-      python313Packages.pylint
-    ];
-  };
-
-  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
-  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
-  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
-
+  # programs.zed-editor = {
+  #   extensions = [
+  #     "log"
+  #     "nix"
+  #     "basher"
+  #     "typst"
+  #   ];
+  #   extraPackages = with pkgs; [
+  #     nil
+  #     nixfmt-rfc-style
+  #     tinymist
+  #     typstyle
+  #     clang-tools
+  #     python313Packages.python-lsp-server
+  #     python313Packages.pylint
+  #   ];
+  # };
+  #
+  # xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
+  # xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
+  # xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
+  #
   programs.yazi = {
     plugins = {
       mount = pkgs.yaziPlugins.mount;
@@ -271,8 +269,8 @@ in
     # Variables de entorno
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
-      PATH = "/home/emilio/.cargo/bin:/home/emilio/.config/herd-lite/bin:$PATH";
-      # PHP_INI_SCAN_DIR = "/home/emilio/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
+      PATH = "${builtins.getEnv "HOME"}/.cargo/bin:${builtins.getEnv "HOME"}/.config/herd-lite/bin:$PATH";
+      PHP_INI_SCAN_DIR = "${builtins.getEnv "HOME"}/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
     };

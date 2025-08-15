@@ -69,7 +69,7 @@ in
   nixpkgs.config.permittedInsecurePackages = [
      "libxml2-2.13.8"
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" ];
 
 # Steam configurations
   programs.steam.enable = true;
@@ -230,6 +230,14 @@ in
     #jack.enable = true;
   };
 
+  services.pipewire.extraConfig.pipewire."92-low-latency" = {
+    "context.properties" = {
+      "default.clock.rate" = 48000;
+      "default.clock.quantum" = 128;
+      "default.clock.min-quantum" = 32;
+      "default.clock.max-quantum" = 256;
+    };
+  };
   services.pipewire.wireplumber.extraConfig."10-bluez" = {
     "monitor.bluez.properties" = {
       "bluez5.enable-sbc-xq" = true;
@@ -268,10 +276,4 @@ in
   };
 
   system.stateVersion = "24.05"; 
-  
- #PS1='\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ '
-  # Definir PROMPT_COMMAND en NixOS
-  #programs.bash.promptInit = ''
-  # '[ -n "$PS1" ] && PS1="\[\e[0m\][\[\e[1;36m\]\u\[\e[0m\]@\[\e[1;36m\]\h\[\e[0m\] \W]\$ "; '
-  #'';
 }
