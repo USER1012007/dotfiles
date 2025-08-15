@@ -26,7 +26,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.emilio = {
-                imports = [ ./home.nix ];
+                imports = [ ../home.nix ];
               };
             };
           }

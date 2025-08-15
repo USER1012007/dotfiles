@@ -15,7 +15,7 @@ in
 
   # Programs
   programs.bash.enable = true;
-  programs.eww.enable = true;
+  # programs.eww.enable = true;
   programs.foot.enable = true;
   programs.mpv.enable = true;
   programs.zed-editor.enable = true;
@@ -222,12 +222,6 @@ in
     style.name = "kvantum";
   };
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".source =
-    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
-      {
-        General.theme = "KvAdaptaDark";
-      };
-
   programs.mpv.config = {
     hwdec = "vaapi";
     hwdec-codecs = "all";
@@ -236,6 +230,8 @@ in
 
   xdg.configFile."Thunar/uca.xml".source = ./configs/thunar.uca.xml;
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
+  xdg.configFile."waybar/config".source = ./configs/waybar/config;
+  xdg.configFile."waybar/style.css".source = ./configs/waybar/style.css;
   xdg.configFile."eww/eww.scss".source = ./configs/eww/eww.scss;
   xdg.configFile."eww/eww.yuck".source = ./configs/eww/eww.yuck;
   xdg.configFile."eww/modules/battery.yuck".source = ./configs/eww/modules/battery.yuck;
@@ -264,7 +260,7 @@ in
       # reboot = "systemctl reboot"; # si quieres activarlo, quita el comentario
       myip = "ip a | grep '/24' | awk '{print $2}' | sed 's/\\/24//'";
       cli = "cli-visualizer";
-      tiempo = "curl wttr.in/corregidora";
+      time = "curl wttr.in/corregidora";
       snvim = "sudo -E nvim";
       check = "ping www.google.com";
       quit = "exit";
@@ -276,7 +272,7 @@ in
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
       PATH = "/home/emilio/.cargo/bin:/home/emilio/.config/herd-lite/bin:$PATH";
-      PHP_INI_SCAN_DIR = "/home/emilio/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
+      # PHP_INI_SCAN_DIR = "/home/emilio/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
     };
@@ -290,5 +286,5 @@ in
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 }
