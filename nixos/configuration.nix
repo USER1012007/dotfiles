@@ -30,6 +30,11 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.cleanTmpDir = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    "nowatchdog"
+    "preempt=full"
+  ];
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
@@ -69,16 +74,13 @@ in
   nixpkgs.config.permittedInsecurePackages = [
      "libxml2-2.13.8"
   ];
-  nix.settings.experimental-features = [ "nix-command" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Steam configurations
   programs.steam.enable = true;
   programs.xwayland.enable = true;
 
   environment.systemPackages = with pkgs; [
-     (pkgs.python3.withPackages (python-pkgs: [
-      python-pkgs.psutil
-     ]))
      git
      niri
      fastfetch
@@ -144,8 +146,6 @@ in
      sqlite
      sqlite-web
      nodejs_24
-     php
-     php84Packages.composer
      # kotlin
      # flutter
      # rustc
