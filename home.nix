@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 let
   yazi-flavors = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -10,8 +10,6 @@ in
 {
 
   home.stateVersion = "25.05";
-  home.username = "emilio";
-  home.homeDirectory = "/home/${config.home.username}";
 
   # Programs
   programs.bash.enable = true;
@@ -65,28 +63,28 @@ in
     };
   };
 
-  # programs.zed-editor = {
-  #   extensions = [
-  #     "log"
-  #     "nix"
-  #     "basher"
-  #     "typst"
-  #   ];
-  #   extraPackages = with pkgs; [
-  #     nil
-  #     nixfmt-rfc-style
-  #     tinymist
-  #     typstyle
-  #     clang-tools
-  #     python313Packages.python-lsp-server
-  #     python313Packages.pylint
-  #   ];
-  # };
-  #
-  # xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
-  # xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
-  # xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
-  #
+  programs.zed-editor = {
+    extensions = [
+      "log"
+      "nix"
+      "basher"
+      "typst"
+    ];
+    extraPackages = with pkgs; [
+      nil
+      nixfmt-rfc-style
+      tinymist
+      typstyle
+      clang-tools
+      python313Packages.python-lsp-server
+      python313Packages.pylint
+    ];
+  };
+
+  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
+  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
+  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
+
   programs.yazi = {
     plugins = {
       mount = pkgs.yaziPlugins.mount;
@@ -248,14 +246,14 @@ in
   xdg.configFile."eww/scripts/nmcli-monitor.sh".source = ./configs/eww/scripts/nmcli-monitor.sh;
   xdg.configFile."eww/scripts/calendar.sh".source = ./configs/eww/scripts/calendar.sh;
   xdg.configFile."eww/scripts/multimonitor.sh".source = ./configs/eww/scripts/multimonitor.sh;
-  programs.bash = {
 
+  programs.bash = {
     # Aliases
     shellAliases = {
       ls = "ls --color=auto";
       grep = "grep --color=auto";
       off = "systemctl poweroff";
-      # reboot = "systemctl reboot"; # si quieres activarlo, quita el comentario
+      # reboot = "systemctl reboot"; 
       myip = "ip a | grep '/24' | awk '{print $2}' | sed 's/\\/24//'";
       cli = "cli-visualizer";
       time = "curl wttr.in/corregidora";

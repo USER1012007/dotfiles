@@ -1,20 +1,13 @@
-# command to active unstable packages
 # nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 
-{ config, pkgs, libs, ... }:
- 
-let
-  # secondmonitor_script = pkgs.writeShellScriptBin "second_monitor_niri_sh" "
-  #   bash /usr/local/bin/second_monitor_niri.sh 
-  # ";
-  ciscoPacketTracer = pkgs.ciscoPacketTracer8.overrideAttrs (oldAttrs: {
-    src = /home/emilio/packettracer/CiscoPacketTracer822_amd64_signed.deb;
-  });
-in
+{ config, pkgs, ... }:
+
 {
   imports =
     [
       ./hardware-configuration.nix
+      ./packages.nix
+      ../home.nix
     ];
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false; 
@@ -79,103 +72,6 @@ in
 # Steam configurations
   programs.steam.enable = true;
   programs.xwayland.enable = true;
-
-  environment.systemPackages = with pkgs; [
-     git
-     niri
-     fastfetch
-     firefox
-     xfce.thunar
-     xfce.thunar-volman
-     pipewire
-     xwayland-satellite
-     htop
-     foot
-     clang
-     wl-clipboard
-     gvfs
-     qalculate-gtk
-     libreoffice
-     localsend
-     appimage-run
-     steam
-     waybar
-     mpv
-     openjdk
-     gnome-themes-extra
-     pkg-config
-     fontconfig
-     kickoff
-     swayosd
-     nomacs
-     swaylock
-     gcc
-     linux-wifi-hotspot
-     bluez
-     lazygit
-     grim
-     imagemagick
-     amdvlk
-     libGLU
-     curl
-     nethogs
-     yazi
-     gapless
-     gammastep
-     pwvucontrol
-     waypaper
-     swww
-     eww
-     jq
-     jaq
-
-     # IDE's
-#    android-tools
-     neovim
-     obsidian
-     zed-editor
-#    godot_4
-
-     # vim plugins
-     vimPlugins.lazygit-nvim
-     vimPlugins.plenary-nvim
-     vimPlugins.vim-visual-multi
-     vimPlugins.neoformat
-
-     # Language servers
-     sqlite
-     sqlite-web
-     nodejs_24
-     # kotlin
-     # flutter
-     # rustc
-     # cargo
-     ciscoPacketTracer 
-     python3
-     clang-tools
-     lua-language-server
-
-     # dependencies for nvchad
-     unzip
-     wl-mirror
-     rsync
-     _7zz
-     gnupg
-     pinentry-tty
-
-     # Flatpak programs scripts
-       (writeShellScriptBin "bedrock" ''
-        #!/bin/bash
-        flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia io.mrarm.mcpelauncher
-      '') 
-
-       (writeShellScriptBin "jellyfin" ''
-        #!/bin/bash
-        flatpak run --env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia com.github.iwalton3.jellyfin-media-player
-      '') 
-
-     # wf-recorder # to record screen # wf-recorder --audio=alsa_output.usb-Razer_Razer_Kraken_V3_X_00000000-00.pro-output-0.monitor --c=H.264 --file=recording.mp4
-  ];
 
   fonts.packages = with pkgs; [
     fira-code
