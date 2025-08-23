@@ -10,6 +10,8 @@ in
 {
 
   home.stateVersion = "25.05";
+  home.username = "emilio";
+  home.homeDirectory = "/home/emilio";
 
   # Programs
   programs.bash.enable = true;
@@ -253,7 +255,7 @@ in
       ls = "ls --color=auto";
       grep = "grep --color=auto";
       off = "systemctl poweroff";
-      # reboot = "systemctl reboot"; 
+      # reboot = "systemctl reboot";
       myip = "ip a | grep '/24' | awk '{print $2}' | sed 's/\\/24//'";
       cli = "cli-visualizer";
       time = "curl wttr.in/corregidora";

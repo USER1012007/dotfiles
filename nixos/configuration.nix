@@ -7,10 +7,9 @@
     [
       ./hardware-configuration.nix
       ./packages.nix
-      ../home.nix
     ];
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false; 
+  hardware.bluetooth.powerOnBoot = false;
 
   # Bootloader.
   boot.kernelModules = [ "nvidia_uvm" ];
@@ -67,7 +66,7 @@
   nixpkgs.config.permittedInsecurePackages = [
      "libxml2-2.13.8"
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" ];
 
 # Steam configurations
   programs.steam.enable = true;
@@ -100,7 +99,7 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  
+
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -154,7 +153,7 @@
     # No open ports to the internet by default
     allowedTCPPorts = [ ];
     allowedUDPPorts = [ ];
-    
+
     # Allow addresses to conect into specific ports
     # allowedTCPConnections = [
     #   {
@@ -171,5 +170,5 @@
     logRefusedConnections = true;
   };
 
-  system.stateVersion = "24.05"; 
+  system.stateVersion = "24.05";
 }
