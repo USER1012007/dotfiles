@@ -1,19 +1,14 @@
 #!/bin/bash
 
-# Carpeta de entrada proporcionada como argumento
 input_folder="$1"
 
- # Verificar si la carpeta de entrada existe
  if [ ! -d "$input_folder" ]; then
      echo "Error: Folder '$input_folder' not found."
      exit 1
  fi
 
-
- # Procesar cada archivo de imagen en la carpeta de entrada
  for file in "$input_folder"/*.{mp3,wma,wav,flac}; do
     if [ -f "$file" ]; then
-         # Nombre de archivo y extensión sin la ruta
          filename=$(basename -- "$file")
          extension="${filename##*.}"
          filename_noext="${filename%.*}"

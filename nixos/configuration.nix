@@ -66,7 +66,7 @@
   nixpkgs.config.permittedInsecurePackages = [
      "libxml2-2.13.8"
   ];
-  nix.settings.experimental-features = [ "nix-command" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Steam configurations
   programs.steam.enable = true;

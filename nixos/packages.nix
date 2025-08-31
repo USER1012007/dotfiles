@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 let
-  ciscoPacketTracer = pkgs.ciscoPacketTracer8.overrideAttrs (oldAttrs: {
-    src = /home/emilio/packettracer/CiscoPacketTracer822_amd64_signed.deb;
-  });
+  # ciscoPacketTracer = pkgs.ciscoPacketTracer8.overrideAttrs (oldAttrs: {
+  #   src = /home/emilio/packettracer/CiscoPacketTracer822_amd64_signed.deb;
+  # });
 in
 {
   environment.systemPackages = with pkgs; [
@@ -54,6 +54,7 @@ in
      eww
      jq
      jaq
+     ffmpeg
 
      # IDE's
 #    android-tools
@@ -76,7 +77,7 @@ in
      # flutter
      # rustc
      # cargo
-     ciscoPacketTracer 
+     # ciscoPacketTracer 
      python3
      clang-tools
      lua-language-server

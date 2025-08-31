@@ -14,6 +14,8 @@ in
   home.homeDirectory = "/home/emilio";
 
   # Programs
+
+  programs.home-manager.enable = true;
   programs.bash.enable = true;
   # programs.eww.enable = true;
   programs.foot.enable = true;
@@ -48,7 +50,7 @@ in
       regular1 = "cd0000"; # red
       regular2 = "00cd00"; # green
       regular3 = "cdcd00"; # yellow
-      regular4 = "0000ee"; # blue
+      regular4 = "87ceeb"; # blue
       regular5 = "cd00cd"; # magenta
       regular6 = "00cdcd"; # cyan
       regular7 = "e5e5e5"; # white
@@ -58,7 +60,7 @@ in
       bright1 = "ff0000"; # bright red
       bright2 = "00ff00"; # bright green
       bright3 = "ffff00"; # bright yellow
-      bright4 = "5c5cff"; # bright blue
+      bright4 = "add8e6"; # bright blue
       bright5 = "ff00ff"; # bright magenta
       bright6 = "00ffff"; # bright cyan
       bright7 = "ffffff"; # bright white
@@ -283,6 +285,4 @@ in
     '';
   };
 
-  # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
 }

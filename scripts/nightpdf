@@ -1,2 +1,0 @@
-#!/bin/bash
-flatpak run --socket=system-bus io.github.lunarequest.NightPDF
