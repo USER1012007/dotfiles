@@ -51,7 +51,6 @@ in
      pwvucontrol
      waypaper
      swww
-     eww
      jq
      jaq
      ffmpeg

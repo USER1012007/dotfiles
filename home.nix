@@ -14,10 +14,8 @@ in
   home.homeDirectory = "/home/emilio";
 
   # Programs
-
   programs.home-manager.enable = true;
   programs.bash.enable = true;
-  # programs.eww.enable = true;
   programs.foot.enable = true;
   programs.mpv.enable = true;
   programs.zed-editor.enable = true;
