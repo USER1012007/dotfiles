@@ -44,7 +44,7 @@
 
   services.xserver.videoDrivers = ["nvidia"];
 
-  networking.hostName = "user1012007"; # Define your hostname.
+  networking.hostName = "user1012007"; 
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Mexico_City";
@@ -54,11 +54,23 @@
     variant = "";
   };
 
-  # virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = false;
+    daemon.settings = {
+      experimental = true;
+      default-address-pools = [
+        {
+          base = "172.30.0.0/16";
+          size = 24;
+        }
+      ];
+    };
+  };
+
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
     packages = with pkgs; [];
   };
 

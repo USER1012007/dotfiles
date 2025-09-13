@@ -273,6 +273,7 @@ in
       PHP_INI_SCAN_DIR = "${builtins.getEnv "HOME"}/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
+      DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
     };
 
     # Config extra que no es alias ni env var

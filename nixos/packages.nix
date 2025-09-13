@@ -24,7 +24,6 @@ in
      libreoffice
      localsend
      appimage-run
-     steam
      waybar
      mpv
      openjdk
@@ -71,7 +70,7 @@ in
      # Language servers
      sqlite
      sqlite-web
-     nodejs_24
+
      # kotlin
      # flutter
      # rustc
