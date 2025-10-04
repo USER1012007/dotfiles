@@ -1,3 +1,4 @@
+
 # nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 
 { config, pkgs, ... }:
@@ -55,7 +56,7 @@
   };
 
   virtualisation.docker = {
-    enable = false;
+    enable = true;
     daemon.settings = {
       experimental = true;
       default-address-pools = [
