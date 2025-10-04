@@ -23,7 +23,6 @@ in
      qalculate-gtk
      libreoffice
      localsend
-     appimage-run
      waybar
      mpv
      openjdk
@@ -40,12 +39,10 @@ in
      lazygit
      grim
      imagemagick
-     amdvlk
      libGLU
      curl
      nethogs
      yazi
-     gapless
      gammastep
      pwvucontrol
      waypaper
@@ -53,13 +50,15 @@ in
      jq
      jaq
      ffmpeg
+     cmus
+     kdePackages.okular
 
      # IDE's
 #    android-tools
      neovim
-     obsidian
      zed-editor
-#    godot_4
+     godot_4
+     gdtoolkit_4
 
      # vim plugins
      vimPlugins.lazygit-nvim
