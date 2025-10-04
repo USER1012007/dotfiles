@@ -147,8 +147,8 @@ in
         ];
         extract = [
           {
-            run = "ouch d -y \"$@\"";
-            desc = "Extract here with ouch";
+            run = "unzip \"$@\"";
+            desc = "Extract here with unzip";
             for = "unix";
           }
         ];
