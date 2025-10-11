@@ -22,9 +22,10 @@ INDEX=1
 while IFS='|' read -r title artist album cover_url; do
     [[ -z "$title" ]] && continue
 
-SEARCH_TITLE=$(echo "$title" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/.*/g')
-WAV_FILE=$(find "$SRC_DIR" -type f -iname "*.wav" | grep -iE "$SEARCH_TITLE" | head -n1 || true)
-echo "🔍 Buscando WAV para título: '$title' → patrón: '$SEARCH_TITLE'"
+    CLEAN_TITLE=$(echo "$title" | iconv -c -t ascii//TRANSLIT | tr '[:upper:]' '[:lower:]')
+    SEARCH_TITLE=$(echo "$CLEAN_TITLE" | awk '{for(i=1;i<=5 && i<=NF;i++) printf "%s ", $i}' | sed -E 's/[^a-z0-9]+/.*?/g')
+    WAV_FILE=$(find "$SRC_DIR" -type f -iname "*.wav" | grep -iE "$SEARCH_TITLE" | head -n1 || true)
+    echo "🔍 Buscando WAV para título: '$title' → patrón: '$SEARCH_TITLE'"
     if [[ -z "$WAV_FILE" ]]; then
         echo "⚠️ No se encontró archivo .wav para: $title" 
         echo "$title|$artist|$album|$cover_url" >> "$NOT_FOUND_FILE"
