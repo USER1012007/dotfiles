@@ -20,6 +20,8 @@ in
   programs.mpv.enable = true;
   programs.zed-editor.enable = true;
   programs.yazi.enable = true;
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
   gtk.enable = true;
   services.swayosd.enable = true;
 
@@ -281,6 +283,7 @@ in
       # Prompt con nombre de branch git
       PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'
       PS1='\[\e[38;5;51m\][\u@\h][\W]{''${PS1_CMD1}}\$ \[\e[0m\]'
+      eval "$(direnv hook bash)"
     '';
   };
 
