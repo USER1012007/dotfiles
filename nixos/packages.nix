@@ -52,6 +52,7 @@ in
      ffmpeg
      cmus
      kdePackages.okular
+     direnv
 
      # IDE's
 #    android-tools
