@@ -53,6 +53,7 @@ in
      cmus
      kdePackages.okular
      direnv
+     ouch
 
      # IDE's
 #    android-tools
@@ -70,6 +71,7 @@ in
      # Language servers
      sqlite
      sqlite-web
+     nodejs
 
      # kotlin
      # flutter
