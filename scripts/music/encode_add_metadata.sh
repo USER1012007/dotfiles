@@ -38,8 +38,7 @@ while IFS='|' read -r title artist album cover_url; do
         curl -sL "$cover_url" -o "$TMP_COVER"
     fi
 
-    NUM=$(printf "%02d" "$INDEX")
-    BASE_NAME="$NUM - $artist - $title.opus"
+    BASE_NAME="$artist - $title.opus"
     OUT_FILE="$DEST_DIR/$BASE_NAME"
 
     echo "🎵 Procesando: $WAV_FILE → $OUT_FILE"
