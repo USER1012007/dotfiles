@@ -5,10 +5,10 @@ pkgs.mkShell {
   buildInputs = [
     pkgs.yt-dlp
     pkgs.opusTools
-    pkgs.r128gain
+    pkgs.rsgain
   ];
 
   shellHook = ''
-    echo "🌟 Entorno listo: yt-dlp, opus-tools y r128gain disponibles"
+    echo "🌟 Entorno listo: yt-dlp, opus-tools y rsgain disponibles"
   '';
 }
