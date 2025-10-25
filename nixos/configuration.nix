@@ -1,4 +1,3 @@
-
 # nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 
 { config, pkgs, ... }:

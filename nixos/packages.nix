@@ -54,6 +54,9 @@ in
      kdePackages.okular
      direnv
      ouch
+     xdg-utils
+     xdg-desktop-portal
+     xdg-desktop-portal-wlr
 
      # IDE's
 #    android-tools
