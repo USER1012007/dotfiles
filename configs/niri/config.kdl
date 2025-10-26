@@ -3,6 +3,7 @@
 
 input {
     keyboard {
+        numlock
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
@@ -28,12 +29,8 @@ input {
     touchpad {
         tap
         dwt
-        // dwtp
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // tap-button-map "left-middle-right"
-        // click-method "clickfinger"
+        accel-speed 0.5
     }
 
 
@@ -243,128 +240,37 @@ hotkey-overlay {
 
 // Animation settings.
 animations {
-    // Uncomment to turn off all animations.
     // off
-
-
     window-close {
- 
-
-    duration-ms 300
- 
-
-        custom-shader r"
- 
-
-            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
- 
-
+      duration-ms 300
+      custom-shader r"
+          vec4 close_color(vec3 coords_geo, vec3 size_geo) {
             float progress = niri_clamped_progress * niri_clamped_progress;
- 
-
             vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
- 
-
             coords.y -= progress * 200.0;
- 
-
             float random = (niri_random_seed - 0.5) / 2.0;
- 
-
             random = sign(random) - random;
- 
-
             float max_angle = 0.05 * random;
- 
-
             float angle = progress * max_angle;
- 
-
             mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
- 
-
             coords = rotate * coords;
- 
-
             coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
- 
-
             vec3 coords_tex = niri_geo_to_tex * coords_geo;
- 
-
             vec4 color = texture2D(niri_tex, coords_tex.st);
- 
-
             return color * (1.0 - niri_clamped_progress);
- 
-
-            }
- 
-
-        "
- 
-
+          }
+      "
     }
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-
-    // You can configure all individual animations.
-    // Available settings are the same for all of them.
-    // - off disables the animation.
-    //
-    // Niri supports two animation types: easing and spring.
-    // You can set properties for only ONE of them.
-    //
-    // Easing has the following settings:
-    // - duration-ms sets the duration of the animation in milliseconds.
-    // - curve sets the easing curve. Currently, available curves
-    //   are "ease-out-cubic" and "ease-out-expo".
-    //
-    // Spring animations work better with touchpad gestures, because they
-    // take into account the velocity of your fingers as you release the swipe.
-    // The parameters are less obvious and generally should be tuned
-    // with trial and error. Notably, you cannot directly set the duration.
-    // You can use this app to help visualize how the spring parameters
-    // change the animation: https://flathub.org/apps/app.drey.Elastic
-    //
-    // A spring animation is configured like this:
-    // - spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
-    //
-    // The damping ratio goes from 0.1 to 10.0 and has the following properties:
-    // - below 1.0: underdamped spring, will oscillate in the end.
-    // - above 1.0: overdamped spring, won't oscillate.
-    // - 1.0: critically damped spring, comes to rest in minimum possible time
-    //        without oscillations.
-    //
-    // However, even with damping ratio = 1.0 the spring animation may oscillate
-    // if "launched" with enough velocity from a touchpad swipe.
-    //
-    // Lower stiffness will result in a slower animation more prone to oscillation.
-    //
-    // Set epsilon to a lower value if the animation "jumps" in the end.
-    //
-    // The spring mass is hardcoded to 1.0 and cannot be changed. Instead, change
-    // stiffness proportionally. E.g. increasing mass by 2x is the same as
-    // decreasing stiffness by 2x.
-
-    // Animation when switching workspaces up and down,
-    // including after the touchpad gesture.
     workspace-switch {
         // off
         // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
 
-    // All horizontal camera view movement:
-    // - When a window off-screen is focused and the camera scrolls to it.
-    // - When a new window appears off-screen and the camera scrolls to it.
-    // - When a window resizes bigger and the camera scrolls to show it in full.
-    // - And so on.
     horizontal-view-movement {
         // off
         // spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 
-    // Window opening animation. Note that this one has different defaults.
     window-open {
         // off
         // duration-ms 150
@@ -374,86 +280,10 @@ animations {
         // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
     }
 
-    // Config parse error and new default config creation notification
-    // open/close animation.
     config-notification-open-close {
-        // off
-        // spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+      // off
+      spring damping-ratio=0.7 stiffness=800 epsilon=0.001
     }
-}
-
-// Window rules let you adjust behavior for individual windows.
-// They are processed in order of appearance in this file.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    // Match directives control which windows this rule will apply to.
-    // You can match by app-id and by title.
-    // The window must match all properties of the match directive.
-    match app-id="org.myapp.MyApp" title="My Cool App"
-
-    // There can be multiple match directives. A window must match any one
-    // of the rule's match directives.
-    //
-    // If there are no match directives, any window will match the rule.
-    match title="Second App"
-
-    // You can also add exclude directives which have the same properties.
-    // If a window matches any exclude directive, it won't match this rule.
-    //
-    // Both app-id and title are regular expressions.
-    // Raw KDL strings are helpful here.
-    exclude app-id=r#"\.unwanted\."#
-
-    // Here are the properties that you can set on a window rule.
-    // These properties apply once, when a window first opens.
-
-    // You can override the default column width.
-    default-column-width { proportion 0.75; }
-
-    // You can set the output that this window will initially open on.
-    // If such an output does not exist, it will open on the currently
-    // focused output as usual.
-    open-on-output "eDP-1"
-
-    // Make this window open as a maximized column.
-    open-maximized true
-
-    // Make this window open fullscreen.
-    open-fullscreen true
-    // You can also set this to false to prevent a window from opening fullscreen.
-    // open-fullscreen false
-
-    // The following properties apply dynamically while a window is open.
-
-    // You can amend the window's minimum and maximum size in logical pixels.
-    // Keep in mind that the window itself always has a final say in its size.
-    // These values instruct niri to never ask the window to be smaller than
-    // the minimum you set, or to be bigger than the maximum you set.
-    min-width 100
-    max-width 200
-    min-height 300
-    // Caveat: max-height will only apply to automatically-sized windows
-    // if it is equal to min-height. Either set this equal to min-height,
-    // or change the window height manually for this to apply.
-    max-height 300
-
-    // Override whether the border and the focus ring draw with a background.
-    // Set this to `true` to draw them as solid colored rectangles even for
-    // windows which agreed to omit their client-side decorations.
-    // Set this to `false` to draw them as borders around the window even for
-    // windows which use client-side decorations.
-    // draw-border-with-background false
-}
-
-// Here's a useful example. Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
-window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
-    // The regular expression can match anywhere in the string.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
 }
 
 window-rule {
