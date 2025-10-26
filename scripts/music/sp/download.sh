@@ -26,10 +26,17 @@ fi
 mkdir -p "$DEST_DIR"
 
 while IFS= read -r url; do
-    [[ -z "$url" ]] && continue 
+    [[ -z "$url" ]] && continue
     echo "🎵 Descargando: $url"
-    yt-dlp -P "$DEST_DIR" -f 'ba' --no-playlist -x --audio-format wav "$url"
+    yt-dlp \
+      --extractor-args "youtube:player-client=android" \
+      --add-header "User-Agent: com.google.android.youtube/19.15.37 (Linux; U; Android 13)" \
+      -P "$DEST_DIR" \
+      -f "bestaudio/best" \
+      --no-playlist \
+      -x --audio-format wav \
+      "$url" || echo "⚠️ Error al descargar: $url"
+    sleep $((RANDOM % 3 + 2))
 done < "$URL_FILE"
 
 echo "✅ Descargas completadas en: $DEST_DIR"
-
