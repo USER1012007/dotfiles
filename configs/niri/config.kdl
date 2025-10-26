@@ -505,6 +505,7 @@ binds {
     Alt+P            { spawn "kickoff"; }
     Super+Alt+L      { spawn "swaylock"; }
     Alt+O            { spawn "waypaper"; }
+    Mod+e            { spawn  "foot" "yazi";}
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     // You can also use a shell:
