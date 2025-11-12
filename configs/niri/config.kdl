@@ -304,6 +304,13 @@ window-rule {
 }
 
 window-rule {
+  match app-id="firefox$" title=".*Save Image.*"
+  open-floating true
+  default-column-width { fixed 780; }
+  default-window-height { fixed 470; }
+}
+
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
