@@ -5,27 +5,30 @@
 set -euo pipefail
 
 if [[ $# -lt 3 ]]; then
-    echo "Uso: $0 <archivo_metadatos.txt> <carpeta_wav> <destino_opus>"
+  echo "Uso: $0 <archivo_metadatos.txt> <carpeta_wav> <destino_opus> [numero_inicial (0:0-100) (1:100-200) ...]"
     exit 1
 fi
 
-METADATA_FILE="$1"
-SRC_DIR="$2"
-DEST_DIR="$3"
-NOT_FOUND_FILE="missing_wavs.txt"
-> "$NOT_FOUND_FILE"
+BASE_DIR="$HOME/Music/spotify_playlists"
+META_BASE="$BASE_DIR/data"
+WAV_BASE="$BASE_DIR/music/wav"
+OPUS_BASE="$BASE_DIR/music/opus"
+
+METADATA_FILE="$META_BASE/$1"
+SRC_DIR="$WAV_BASE/$2"
+DEST_DIR="$OPUS_BASE/$3"
+NUM_INIT=$4
 
 mkdir -p "$DEST_DIR"
 
-INDEX=1
+INDEX=$((NUM_INIT * 100 + 1))
+# INDEX=1
 
 while IFS='|' read -r title artist album cover_url <&3; do
     [[ -z "${title:-}" ]] && continue
 
     CLEAN_TITLE=$(echo "$title" | iconv -c -t ascii//TRANSLIT | tr '[:upper:]' '[:lower:]')
     SEARCH_TITLE=$(echo "$CLEAN_TITLE" | sed -E 's/[^a-z0-9]+/.*/g')
-
-    echo "Buscando WAV para título: '$title' → patrón: '$SEARCH_TITLE'"
 
     WAV_FILE=$(find "$SRC_DIR" -type f -iname "*.wav" | while read -r f; do
         CLEAN_NAME=$(basename "$f" | iconv -c -t ascii//TRANSLIT | tr '[:upper:]' '[:lower:]')
@@ -35,13 +38,8 @@ while IFS='|' read -r title artist album cover_url <&3; do
         fi
     done)
 
-    if [[ -z "${WAV_FILE:-}" ]]; then
-        echo "⚠️ No se encontró archivo .wav para: $title"
-        echo "$title|$artist|$album|$cover_url" >> "$NOT_FOUND_FILE"
-        continue
-    fi
-
-    BASE_NAME="$artist - $title.opus"
+    NUM=$(printf "%02d" "$INDEX")
+    BASE_NAME="$NUM - $artist - $title.opus"
     OUT_FILE="$DEST_DIR/$BASE_NAME"
 
     TMP_COVER=$(mktemp /tmp/cover_XXXX.jpg)
@@ -69,17 +67,12 @@ while IFS='|' read -r title artist album cover_url <&3; do
 
         rm -f "$TMP_WAV" "$TMP_COVER"
 
-        # Aplicar ReplayGain
         if rsgain custom -s 'i' -l '-18' -o 't' "$OUT_FILE"; then
-            echo "✅ ReplayGain aplicado: $OUT_FILE"
-        else
-            echo "⚠️ Error al aplicar ReplayGain en $OUT_FILE"
+            echo "ReplayGain aplicado: $OUT_FILE"
         fi
 
-        echo "✅ Listo: $OUT_FILE"
-
     } || {
-        echo "❌ Falló el procesamiento de: $title"
+        echo "Falló el procesamiento de: $title"
         rm -f "$TMP_WAV" "$TMP_COVER" || true
         continue
     }
@@ -87,5 +80,3 @@ while IFS='|' read -r title artist album cover_url <&3; do
     ((INDEX++))
 done 3< "$METADATA_FILE"
 
-echo "🏁 Todos los archivos procesados con metadata, carátula y ReplayGain."
-echo "📄 Canciones no encontradas guardadas en: $NOT_FOUND_FILE"
