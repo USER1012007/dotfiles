@@ -19,7 +19,7 @@ URL_FILE="$1"
 DEST_DIR="/home/emilio/Music/spotify_playlists/music/wav/$NAME"
 
 if [[ ! -f "$URL_FILE" ]]; then
-    echo "❌ El archivo '$URL_FILE' no existe."
+    echo "El archivo '$URL_FILE' no existe."
     exit 1
 fi
 
@@ -27,7 +27,7 @@ mkdir -p "$DEST_DIR"
 
 while IFS= read -r url; do
     [[ -z "$url" ]] && continue
-    echo "🎵 Descargando: $url"
+    echo "Descargando: $url"
     yt-dlp \
       --extractor-args "youtube:player-client=android" \
       --add-header "User-Agent: com.google.android.youtube/19.15.37 (Linux; U; Android 13)" \
@@ -35,8 +35,6 @@ while IFS= read -r url; do
       -f "bestaudio/best" \
       --no-playlist \
       -x --audio-format wav \
-      "$url" || echo "⚠️ Error al descargar: $url"
+      "$url" || echo "Error al descargar: $url"
     sleep $((RANDOM % 3 + 2))
 done < "$URL_FILE"
-
-echo "✅ Descargas completadas en: $DEST_DIR"
