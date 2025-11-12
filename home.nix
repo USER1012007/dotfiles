@@ -26,11 +26,6 @@ in
   services.swayosd.enable = true;
 
   # Configs
-  programs.git = {
-    enable = true;
-    userName = "User1012007";
-    userEmail = "rojasbadilloe@gmail.com";
-  };
 
   # programs.eww = {
   #   configDir = ./configs/eww/eww.yuck;
