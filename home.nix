@@ -84,10 +84,6 @@ in
     ];
   };
 
-  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
-  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
-  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
-
   programs.yazi = {
     plugins = {
       mount = pkgs.yaziPlugins.mount;
@@ -255,6 +251,9 @@ in
   xdg.configFile."eww/scripts/nmcli-monitor.sh".source = ./configs/eww/scripts/nmcli-monitor.sh;
   xdg.configFile."eww/scripts/calendar.sh".source = ./configs/eww/scripts/calendar.sh;
   xdg.configFile."eww/scripts/multimonitor.sh".source = ./configs/eww/scripts/multimonitor.sh;
+  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
+  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
+  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
 
   programs.bash = {
     # Aliases
