@@ -6,6 +6,10 @@ let
     rev = "68326b4ca4b5b66da3d4a4cce3050e5e950aade5";
     hash = "sha256-nhIhCMBqr4VSzesplQRF6Ik55b3Ljae0dN+TYbzQb5s=";
   };
+  yazi-lazygit = builtins.fetchGit {
+    url = "https://github.com/Lil-Dank/lazygit.yazi.git";
+    rev = "8f37dc5795f165021098b17d797c7b8f510aeca9";
+  };
 in
 {
 
@@ -118,6 +122,11 @@ in
           run = "plugin ouch";
           desc = "Compress with ouch";
         }
+        {
+          on   = [ "g" "i" ];
+          run  = "plugin lazygit";
+          desc = "run lazygit";
+        }
       ];
     };
     settings = {
@@ -223,6 +232,7 @@ in
     gpu-api = "opengl";
   };
 
+  xdg.configFile.".config/yazi/plugins/lazygit.yazi".source = yazi-lazygit;
   xdg.configFile."Thunar/uca.xml".source = ./configs/thunar.uca.xml;
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
   xdg.configFile."waybar/config".source = ./configs/waybar/config;
