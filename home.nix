@@ -12,7 +12,6 @@ let
   };
 in
 {
-
   home.stateVersion = "25.05";
   home.username = "emilio";
   home.homeDirectory = "/home/emilio";
@@ -228,7 +227,7 @@ in
     gpu-api = "opengl";
   };
 
-  xdg.configFile.".config/yazi/plugins/lazygit.yazi".source = yazi-lazygit;
+  xdg.configFile."yazi/plugins/lazygit.yazi".source = yazi-lazygit;
   xdg.configFile."Thunar/uca.xml".source = ./configs/thunar.uca.xml;
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
   xdg.configFile."waybar/config".source = ./configs/waybar/config;
@@ -275,8 +274,7 @@ in
     # Variables de entorno
     sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
-      PATH = "${builtins.getEnv "HOME"}/.cargo/bin:${builtins.getEnv "HOME"}/.config/herd-lite/bin:$PATH";
-      PHP_INI_SCAN_DIR = "${builtins.getEnv "HOME"}/.config/herd-lite/bin:$PHP_INI_SCAN_DIR";
+      PATH = "${builtins.getEnv "HOME"}/.cargo/bin:$PATH";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
       DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
