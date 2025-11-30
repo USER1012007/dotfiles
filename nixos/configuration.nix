@@ -84,6 +84,19 @@
   programs.steam.enable = true;
   programs.xwayland.enable = true;
 
+  services.httpd = {
+    enable = true;
+    adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
+    enablePHP = true;
+    extraModules = [ "php" ];            # Habilita el módulo PHP
+  };
+
+  services.httpd.virtualHosts."localhost" = {
+    documentRoot = "/var/www/html";
+    enableUserDir = true; 
+    serverAliases = [ "localhost" ]; 
+  };
+
   fonts.packages = with pkgs; [
     fira-code
     fira-code-symbols
