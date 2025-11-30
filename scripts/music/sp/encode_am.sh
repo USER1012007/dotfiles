@@ -22,7 +22,6 @@ NUM_INIT=$4
 mkdir -p "$DEST_DIR"
 
 INDEX=$((NUM_INIT * 100 + 1))
-# INDEX=1
 
 while IFS='|' read -r title artist album cover_url <&3; do
     [[ -z "${title:-}" ]] && continue
