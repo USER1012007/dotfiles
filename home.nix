@@ -277,7 +277,7 @@ in
       PATH = "${builtins.getEnv "HOME"}/.cargo/bin:$PATH";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
-      DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
+      # DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
     };
 
     # Config extra que no es alias ni env var
