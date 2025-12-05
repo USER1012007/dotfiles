@@ -54,23 +54,23 @@
     variant = "";
   };
 
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-      experimental = true;
-      default-address-pools = [
-        {
-          base = "172.30.0.0/16";
-          size = 24;
-        }
-      ];
-    };
-  };
+  # virtualisation.docker = {
+  #   enable = true;
+  #   daemon.settings = {
+  #     experimental = true;
+  #     default-address-pools = [
+  #       {
+  #         base = "172.30.0.0/16";
+  #         size = 24;
+  #       }
+  #     ];
+  #   };
+  # };
 
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     packages = with pkgs; [];
   };
 
@@ -83,19 +83,6 @@
 # Steam configurations
   programs.steam.enable = true;
   programs.xwayland.enable = true;
-
-  services.httpd = {
-    enable = true;
-    adminAddr = "rojasbadilloe@gmail.com";  # Reemplaza con tu correo para notificaciones de Apache
-    enablePHP = true;
-    extraModules = [ "php" ];            # Habilita el módulo PHP
-  };
-
-  services.httpd.virtualHosts."localhost" = {
-    documentRoot = "/var/www/html";
-    enableUserDir = true; 
-    serverAliases = [ "localhost" ]; 
-  };
 
   fonts.packages = with pkgs; [
     fira-code
