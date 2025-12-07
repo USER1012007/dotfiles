@@ -38,8 +38,9 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
+    powerManagement.enable = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
