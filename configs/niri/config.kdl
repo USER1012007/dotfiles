@@ -352,6 +352,8 @@ binds {
     XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume"  "raise"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume"  "lower"; }
     XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    Mod+XF86AudioMute    allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
+
     XF86AudioPlay        { spawn "playerctl" "play-pause"; }       
     XF86AudioNext        { spawn "playerctl" "next"; }
     XF86AudioPrev        { spawn "playerctl" "previous"; }
