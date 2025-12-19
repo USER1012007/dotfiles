@@ -316,14 +316,6 @@ window-rule {
 }
 
 binds {
-    // Keys consist of modifiers separated by + signs, followed by an XKB key name
-    // in the end. To find an XKB name for a particular key, you may use a program
-    // like wev.
-    //
-    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
-    // when running as a winit window.
-    //
-    // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
     
     XF86MonBrightnessDown { spawn  "swayosd-client" "--brightness" "lower"; }
@@ -345,6 +337,11 @@ binds {
     Mod+e            { spawn  "foot" "yazi";}
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
+
+Mod+Ctrl+V { 
+    spawn "sh" "-c" "niri msg action toggle-window-floating && niri msg action set-window-height 270 && niri msg action set-window-width 570 && niri msg action move-floating-window -x 960 -y 10"
+}
+    
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
