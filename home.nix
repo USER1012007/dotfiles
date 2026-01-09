@@ -8,7 +8,7 @@ let
   };
   yazi-lazygit = builtins.fetchGit {
     url = "https://github.com/Lil-Dank/lazygit.yazi.git";
-    rev = "8f37dc5795f165021098b17d797c7b8f510aeca9";
+    rev = "0e56060192d1ccd307664bf93b3d0beb1efe528e";
   };
 in
 {
@@ -122,6 +122,11 @@ in
           run  = "plugin lazygit";
           desc = "run lazygit";
         }
+        {
+          on   = [ "e" ];
+          run  = "shell --orphan --confirm foot";
+          desc = "run foot terminal";
+        }
       ];
     };
     settings = {
@@ -197,7 +202,7 @@ in
     };
     theme = {
       flavor = {
-        dark = "catppuccin-mocha";
+        # dark = "catppuccin-mocha";
       };
     };
   };
