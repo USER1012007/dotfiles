@@ -350,6 +350,7 @@ Mod+Ctrl+V {
     XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume"  "lower"; }
     XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
     Mod+XF86AudioMute    allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
+    Mod+XF86AudioRaiseVolume    allow-when-locked=true { spawn "swayosd-client" "--playerctl" "next"; }
 
     XF86AudioPlay        { spawn "playerctl" "play-pause"; }       
     XF86AudioNext        { spawn "playerctl" "next"; }
