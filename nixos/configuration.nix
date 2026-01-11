@@ -21,20 +21,20 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "nowatchdog"
     "preempt=full"
   ];
 
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.allowReboot = true;
 
   hardware.graphics = {
     enable = true;
   };
-  hardware.opengl.enable = true;
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
@@ -76,9 +76,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-     "libxml2-2.13.8"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #    "libxml2-2.13.8"
+  # ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Steam configurations
