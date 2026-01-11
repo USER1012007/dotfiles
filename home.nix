@@ -21,7 +21,7 @@ in
   programs.bash.enable = true;
   programs.foot.enable = true;
   programs.mpv.enable = true;
-  programs.zed-editor.enable = true;
+  # programs.zed-editor.enable = true;
   programs.yazi.enable = true;
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -65,23 +65,23 @@ in
     };
   };
 
-  programs.zed-editor = {
-    extensions = [
-      "log"
-      "nix"
-      "basher"
-      "typst"
-    ];
-    extraPackages = with pkgs; [
-      nil
-      nixfmt-rfc-style
-      tinymist
-      typstyle
-      clang-tools
-      python313Packages.python-lsp-server
-      python313Packages.pylint
-    ];
-  };
+  # programs.zed-editor = {
+  #   extensions = [
+  #     "log"
+  #     "nix"
+  #     "basher"
+  #     "typst"
+  #   ];
+  #   extraPackages = with pkgs; [
+  #     nil
+  #     nixfmt-rfc-style
+  #     tinymist
+  #     typstyle
+  #     clang-tools
+  #     python313Packages.python-lsp-server
+  #     python313Packages.pylint
+  #   ];
+  # };
 
   programs.yazi = {
     plugins = {
@@ -255,9 +255,9 @@ in
   xdg.configFile."eww/scripts/nmcli-monitor.sh".source = ./configs/eww/scripts/nmcli-monitor.sh;
   xdg.configFile."eww/scripts/calendar.sh".source = ./configs/eww/scripts/calendar.sh;
   xdg.configFile."eww/scripts/multimonitor.sh".source = ./configs/eww/scripts/multimonitor.sh;
-  xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
-  xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
-  xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
+  # xdg.configFile."zed/tasks.json".source = ./configs/zed/tasks.json;
+  # xdg.configFile."zed/themes/custom-theme-1.json".source = ./configs/zed/themes/custom-theme-1.json;
+  # xdg.configFile."zed/settings.json".source = ./configs/zed/settings.json;
 
   programs.bash = {
     # Aliases
