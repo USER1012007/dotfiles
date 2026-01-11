@@ -11,8 +11,8 @@ in
      niri
      fastfetch
      firefox
-     xfce.thunar
-     xfce.thunar-volman
+     thunar
+     thunar-volman
      pipewire
      xwayland-satellite
      htop
@@ -61,7 +61,7 @@ in
      # IDE's
 #    android-tools
      neovim
-     zed-editor
+     # zed-editor
      godot_4
      gdtoolkit_4
 
