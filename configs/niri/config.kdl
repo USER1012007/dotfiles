@@ -297,6 +297,11 @@ window-rule {
 }
 
 window-rule {
+  match app-id="mpv"
+  open-fullscreen true
+}
+
+window-rule {
   match app-id="firefox$" title=".*File Upload.*"
   open-floating true
   default-column-width { fixed 780; }
