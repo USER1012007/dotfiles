@@ -34,7 +34,7 @@ in
      nomacs
      swaylock
      gcc
-     linux-wifi-hotspot
+     # linux-wifi-hotspot
      bluez
      lazygit
      grim
@@ -62,8 +62,9 @@ in
 #    android-tools
      neovim
      # zed-editor
-     godot_4
-     gdtoolkit_4
+
+     # godot_4
+     # gdtoolkit_4
 
      # vim plugins
      vimPlugins.lazygit-nvim
@@ -72,8 +73,6 @@ in
      vimPlugins.neoformat
 
      # Language servers
-     sqlite
-     sqlite-web
      nodejs
 
      # kotlin
@@ -92,6 +91,8 @@ in
      _7zz
      gnupg
      pinentry-tty
+
+     ani-cli
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
