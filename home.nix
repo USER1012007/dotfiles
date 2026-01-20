@@ -127,6 +127,11 @@ in
           run  = "shell --orphan --confirm foot";
           desc = "run foot terminal";
         }
+        {
+          on = [ "<C-w>" ];
+          run = "close";
+          desc = "Close the current tab";
+        }
       ];
     };
     settings = {
