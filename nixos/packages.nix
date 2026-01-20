@@ -82,6 +82,7 @@ in
      # ciscoPacketTracer 
      python3
      clang-tools
+     rust-analyzer
      lua-language-server
 
      # dependencies for nvchad
