@@ -302,13 +302,6 @@ window-rule {
 }
 
 window-rule {
-  match app-id="firefox$" title=".*File Upload.*"
-  open-floating true
-  default-column-width { fixed 780; }
-  default-window-height { fixed 470; }
-}
-
-window-rule {
   match app-id="firefox$" title=".*Save Image.*"
   open-floating true
   default-column-width { fixed 780; }
