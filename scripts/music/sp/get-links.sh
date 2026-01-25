@@ -26,7 +26,6 @@ for file in "$DIR"/*.txt; do
             echo "https://www.youtube.com/watch?v=$URL"
         else
             echo "No se encontró resultado para: $query"
-            echo $query > missing.txt
         fi
     done
 done
