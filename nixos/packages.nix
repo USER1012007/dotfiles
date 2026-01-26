@@ -71,6 +71,7 @@ in
      vimPlugins.plenary-nvim
      vimPlugins.vim-visual-multi
      vimPlugins.neoformat
+     vimPlugins.nvim-jdtls
 
      # Language servers
      nodejs
@@ -84,6 +85,8 @@ in
      clang-tools
      rust-analyzer
      lua-language-server
+     lombok
+     jdt-language-server
 
      # dependencies for nvchad
      unzip
