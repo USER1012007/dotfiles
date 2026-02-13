@@ -66,15 +66,8 @@ in
      # godot_4
      # gdtoolkit_4
 
-     # vim plugins
-     vimPlugins.lazygit-nvim
-     vimPlugins.plenary-nvim
-     vimPlugins.vim-visual-multi
-     vimPlugins.neoformat
-     vimPlugins.nvim-jdtls
 
      # Language servers
-     nodejs
 
      # kotlin
      # flutter
@@ -82,11 +75,6 @@ in
      # cargo
      # ciscoPacketTracer 
      python3
-     clang-tools
-     rust-analyzer
-     lua-language-server
-     lombok
-     jdt-language-server
 
      # dependencies for nvchad
      unzip
