@@ -11,8 +11,8 @@ in
      niri
      fastfetch
      firefox
-     thunar
-     thunar-volman
+     # thunar
+     # thunar-volman
      pipewire
      xwayland-satellite
      htop
