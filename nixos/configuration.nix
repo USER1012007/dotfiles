@@ -33,14 +33,23 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
   };
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false;
     powerManagement.enable = true;
+    powerManagement.finegrained = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    nvidiaPersistenced = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:117:0:0";
+    };
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -55,23 +64,23 @@
     variant = "";
   };
 
-  # virtualisation.docker = {
-  #   enable = true;
-  #   daemon.settings = {
-  #     experimental = true;
-  #     default-address-pools = [
-  #       {
-  #         base = "172.30.0.0/16";
-  #         size = 24;
-  #       }
-  #     ];
-  #   };
-  # };
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      experimental = true;
+      default-address-pools = [
+        {
+          base = "172.30.0.0/16";
+          size = 24;
+        }
+      ];
+    };
+  };
 
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker"];
     packages = with pkgs; [];
   };
 
@@ -83,17 +92,24 @@
 
 # Steam configurations
   programs.steam.enable = true;
+
   programs.xwayland.enable = true;
 
-  fonts.packages = with pkgs; [
-    fira-code
-    fira-code-symbols
-    noto-fonts
-    liberation_ttf
-    dejavu_fonts
-    font-awesome
-    nerd-fonts.caskaydia-mono
-  ];
+  fonts = {
+    fontDir.enable = true;
+    enableDefaultPackages = true;
+    enableGhostscriptFonts = false;
+
+    packages = with pkgs; [
+      fira-code
+      fira-code-symbols
+      noto-fonts         
+      liberation_ttf     
+      dejavu_fonts
+      font-awesome
+      nerd-fonts.caskaydia-mono
+    ];
+  };
 
   environment.etc."polkit-1/rules.d/10-nixos.rules".text = ''
     polkit.addRule(function(action, subject) {
