@@ -21,7 +21,7 @@ in
      wl-clipboard
      gvfs
      qalculate-gtk
-     libreoffice
+     # libreoffice
      localsend
      waybar
      mpv
