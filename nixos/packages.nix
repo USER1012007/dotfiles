@@ -86,6 +86,7 @@ in
      pinentry-tty
 
      ani-cli
+     logseq
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
