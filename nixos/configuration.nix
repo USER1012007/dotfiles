@@ -192,7 +192,7 @@
     # ];
 
     # Allow Avahi/mDNS only on local Wi-Fi
-    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 ];
+    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 53317 ];
     interfaces."wlp4s0".allowedTCPPorts = [  ];
 
     allowPing = false;
