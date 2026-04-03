@@ -142,7 +142,7 @@
   };
 
 
-  xdg.portal.config.common.default = "*";
+  xdg.portal.config.common.default = "gnome";
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
