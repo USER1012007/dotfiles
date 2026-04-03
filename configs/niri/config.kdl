@@ -198,6 +198,7 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 // spawn-at-startup "eww" "daemon"
 // spawn-at-startup "sh" "-c" "$HOME/.config/eww/scripts/multimonitor.sh"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "waybar"
 spawn-at-startup "swayosd-server"
 spawn-at-startup "swww-daemon"
