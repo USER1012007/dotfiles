@@ -91,7 +91,14 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
 # Steam configurations
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  services.zerotierone.enable = true;
+  services.terraria.enable = true;
+  services.terraria.openFirewall = true;
 
   programs.xwayland.enable = true;
 
@@ -180,8 +187,8 @@
     enable = true;
 
     # No open ports to the internet by default
-    allowedTCPPorts = [ ];
-    allowedUDPPorts = [ ];
+    allowedTCPPorts = [ 7777 ];
+    allowedUDPPorts = [ 7777 9993 ];
 
     # Allow addresses to conect into specific ports
     # allowedTCPConnections = [
@@ -192,7 +199,7 @@
     # ];
 
     # Allow Avahi/mDNS only on local Wi-Fi
-    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 53317 ];
+    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 53317 7777 ];
     interfaces."wlp4s0".allowedTCPPorts = [  ];
 
     allowPing = false;
