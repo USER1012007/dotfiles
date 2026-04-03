@@ -87,6 +87,7 @@ in
 
      ani-cli
      logseq
+     gh
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
