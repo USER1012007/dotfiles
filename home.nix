@@ -39,7 +39,7 @@ in
       font = "CaskaydiaMonoNerdFont:size=14";
       dpi-aware = false;
     };
-    colors = {
+    colors-dark = {
       alpha = 0.7;
       background = "000000";
       foreground = "FFFFFF";
@@ -317,6 +317,8 @@ in
       PATH = "${builtins.getEnv "HOME"}/.cargo/bin:$PATH";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
+      XDG_CURRENT_DESKTOP = "niri";
+      XDG_SESSION_TYPE = "wayland";
       # DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
     };
 
