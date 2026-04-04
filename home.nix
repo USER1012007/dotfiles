@@ -317,6 +317,8 @@ in
       PATH = "${builtins.getEnv "HOME"}/.cargo/bin:$PATH";
       GPG_TTY = "$(tty)";
       DISPLAY = ":0";
+      GTK_USE_PORTAL = "1";
+      GDK_BACKEND = "wayland";
       XDG_CURRENT_DESKTOP = "niri";
       XDG_SESSION_TYPE = "wayland";
       # DOCKER_HOST="unix://$XDG_RUNTIME_DIR/docker.sock";
