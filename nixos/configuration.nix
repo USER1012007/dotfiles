@@ -39,7 +39,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
-    powerManagement.enable = true;
+    powerManagement.enable = false;
     powerManagement.finegrained = true;
     nvidiaSettings = true;
     nvidiaPersistenced = true;
@@ -142,12 +142,13 @@
   };
 
 
-  xdg.portal.config.common.default = "gnome";
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
     ];
+    config.common.default = [ "gnome" "gtk" ];
   };
 
   services.gvfs.enable = true;
