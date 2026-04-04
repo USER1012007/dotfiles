@@ -326,9 +326,12 @@ window-rule {
 }
 
 window-rule {
-  match app-id="firefox$" title=".*Save Image.*"
-  match app-id="firefox$" title=".*File Upload.*"
-  match app-id="localsend_app$" title=".*Choose Directory.*"
+  match app-id="firefox$"
+  open-fullscreen true
+}
+
+window-rule {
+  match app-id="xdg-desktop-portal-gtk$"
   open-floating true
   default-column-width { fixed 780; }
   default-window-height { fixed 470; }
