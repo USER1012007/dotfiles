@@ -201,8 +201,8 @@ layout {
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "waybar"
 spawn-at-startup "swayosd-server"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "swww" "img" "/home/emilio/Pictures/astro.jpg"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "awww" "img" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "xwayland-satellite"
 // You can override environment variables for processes spawned by niri.
 environment {
@@ -284,6 +284,28 @@ animations {
     config-notification-open-close {
       // off
       spring damping-ratio=0.7 stiffness=800 epsilon=0.001
+    }
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
     }
 }
 
