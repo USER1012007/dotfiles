@@ -201,7 +201,6 @@ layout {
 spawn-at-startup "systemctl --user restart xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-gnome"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "waybar"
-spawn-at-startup "swayosd-server"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "awww" "img" "/home/emilio/Pictures/astro.jpg"
 spawn-at-startup "xwayland-satellite"
