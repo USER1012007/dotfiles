@@ -146,11 +146,15 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = [ "gnome" "gtk" ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
+    config = {
+      common.default = [ "gtk" ];
+      niri = {
+        "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+        default = [ "gtk" ];
+      };
+    };
   };
 
   services.gvfs.enable = true;
