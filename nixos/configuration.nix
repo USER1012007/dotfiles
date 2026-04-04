@@ -141,6 +141,8 @@
     enableSSHSupport = true;
   };
 
+  services.dbus.enable = true;
+  xdg.portal.wlr.enable = true;
 
   xdg.portal = {
     enable = true;
