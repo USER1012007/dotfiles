@@ -46,7 +46,7 @@ in
      gammastep
      pwvucontrol
      waypaper
-     swww
+     awww
      jq
      jaq
      ffmpeg
