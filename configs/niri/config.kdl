@@ -364,16 +364,16 @@ binds {
     Mod+e            { spawn  "foot" "yazi";}
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
-
-Mod+Ctrl+V { 
-    spawn "sh" "-c" "niri msg action toggle-window-floating && niri msg action set-window-height 270 && niri msg action set-window-width 570 && niri msg action move-floating-window -x 960 -y 10"
-}
+    Mod+Shift+C      { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    Mod+Ctrl+V { 
+      spawn "sh" "-c" "niri msg action toggle-window-floating && niri msg action set-window-height 270 && niri msg action set-window-width 570 && niri msg action move-floating-window -x 960 -y 10"
+    }
     
     // You can also use a shell:
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume"  "raise"; }
+    XF86AudioRaiseVolume { spawn "swayosd-client" "--output-volume"  "raise"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume"  "lower"; }
     XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
     Mod+XF86AudioMute    allow-when-locked=true { spawn "swayosd-client" "--playerctl" "play-pause"; }
