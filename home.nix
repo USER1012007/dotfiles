@@ -158,6 +158,11 @@ in
           desc = "run foot terminal";
         }
         {
+          on   = [ "u" ];
+          run  = "shell --orphan --confirm 'foot yazi'";
+          desc = "run yazi";
+        }
+        {
           on = [ "<C-w>" ];
           run = "close";
           desc = "Close the current tab";
