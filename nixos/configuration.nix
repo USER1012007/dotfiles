@@ -157,6 +157,8 @@
     };
   };
 
+  programs.dconf.enable = true;
+
   services.gvfs.enable = true;
   services.flatpak.enable = true;
   security.rtkit.enable = true;
