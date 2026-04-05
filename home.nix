@@ -247,6 +247,13 @@ in
     };
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-application-prefer-dark-theme = 1;
+    };
+  };
+
   gtk.gtk3.extraConfig = {
     gtk-icon-theme-name = "Adwaita";
     gtk-theme-name = "Adwaita-dark";
