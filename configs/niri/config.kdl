@@ -237,7 +237,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d.png"
 // Settings for the "Important Hotkeys" overlay.
 hotkey-overlay {
     // Uncomment this line if you don't want to see the hotkey help at niri startup.
-    // skip-at-startup
+    skip-at-startup
 }
 
 // Animation settings.
@@ -326,11 +326,6 @@ window-rule {
 }
 
 window-rule {
-  match app-id="firefox$"
-  open-fullscreen true
-}
-
-window-rule {
   match app-id="xdg-desktop-portal-gtk$"
   open-floating true
   default-column-width { fixed 780; }
@@ -340,6 +335,11 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+  match app-id="firefox$"
+  open-fullscreen true
 }
 
 binds {
