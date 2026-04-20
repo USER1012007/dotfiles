@@ -339,7 +339,7 @@ window-rule {
 
 window-rule {
   match app-id="firefox$"
-  open-fullscreen true
+  open-maximized true
 }
 
 binds {

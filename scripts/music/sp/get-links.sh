@@ -20,12 +20,8 @@ for file in "$DIR"/*.txt; do
     grep -oP '^[^|]+\|[^|]+' "$file" | sed 's/|/,/' | while IFS= read -r query; do
         [[ -z "$query" ]] && continue  
         
-        URL=$(yt-dlp "ytsearch1:$query" --get-id 2>/dev/null)
+        URL=$(yt-dlp "ytsearch1:$query" --get-id)
 
-        if [[ -n "$URL" ]]; then
-            echo "https://www.youtube.com/watch?v=$URL"
-        else
-            echo "No se encontró resultado para: $query"
-        fi
+        echo "https://www.youtube.com/watch?v=$URL"
     done
 done
