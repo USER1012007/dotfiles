@@ -81,6 +81,7 @@ in
        lombok
        jdt-language-server
        nodejs
+       tree-sitter
 
        # vim plugins
        vimPlugins.lazygit-nvim
