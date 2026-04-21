@@ -64,12 +64,12 @@
     variant = "";
   };
 
-  users.users.nixosvmtest = {
-    isNormalUser = true;
-    initialPassword = "testpassword"; # Use this to log in
-    extraGroups = [ "wheel" ]; # Allows sudo access
-  };
-
+  # users.users.nixosvmtest = {
+  #   isNormalUser = true;
+  #   initialPassword = "testpassword"; # Use this to log in
+  #   extraGroups = [ "wheel" ]; # Allows sudo access
+  # };
+  #
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
