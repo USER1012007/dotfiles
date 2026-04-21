@@ -57,7 +57,6 @@ in
      xdg-utils
      xdg-desktop-portal
      xdg-desktop-portal-wlr
-     galaxy-buds-client
 
      # IDE's
 #    android-tools
