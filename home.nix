@@ -89,6 +89,10 @@ in
        vimPlugins.vim-visual-multi
        vimPlugins.neoformat
        vimPlugins.nvim-jdtls
+       gopls
+       gotools 
+       delve
+       go
     ];
 
     extraPython3Packages = python3Packages: with python3Packages; [
