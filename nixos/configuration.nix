@@ -102,9 +102,9 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-  services.zerotierone.enable = true;
-  services.terraria.enable = true;
-  services.terraria.openFirewall = true;
+  # services.zerotierone.enable = true;
+  # services.terraria.enable = true;
+  # services.terraria.openFirewall = true;
 
   programs.xwayland.enable = true;
 
