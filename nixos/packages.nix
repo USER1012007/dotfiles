@@ -57,6 +57,7 @@ in
      xdg-utils
      xdg-desktop-portal
      xdg-desktop-portal-wlr
+     matugen
 
      # IDE's
 #    android-tools
