@@ -1,6 +1,5 @@
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
-
 input {
     keyboard {
         numlock
@@ -91,6 +90,7 @@ output "eDP-1" {
 }
 
 layout {
+    // Put the include INSIDE the layout block
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
     // This is because windows using client-side decorations can have an arbitrary shape.
