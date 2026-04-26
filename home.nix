@@ -40,6 +40,7 @@
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
   xdg.configFile."waybar/config".source = ./configs/waybar/config;
   xdg.configFile."waybar/style.css".source = ./configs/waybar/style.css;
+  # xdg.configFile."matugen/config.toml".source = ./configs/matugen/config.toml;
 
   programs.bash = {
     shellAliases = {
