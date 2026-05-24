@@ -19,6 +19,7 @@ in
      foot
      clang
      wl-clipboard
+     wlr-randr
      gvfs
      qalculate-gtk
      # libreoffice
@@ -85,7 +86,6 @@ in
      gnupg
      pinentry-tty
 
-     ani-cli
      logseq
      gh
 
