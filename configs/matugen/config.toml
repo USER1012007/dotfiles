@@ -1,0 +1,31 @@
+[config]
+caching = false
+expr_prefix = "{{"
+expr_postfix = "}}"
+block_prefix = "<*"
+block_postfix = "*>"
+
+[config.wallpaper]
+set = false ## true
+command = "swww img --transition-type grow {{ image }}"
+
+[templates.Niri]
+input_path = 'templates/niri-colors.kdl'
+output_path = '~/.config/niri/colors.kdl'
+
+[templates.gtk3]
+input_path = "~/.config/matugen/templates/gtk-colors.css"
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.waybar]
+input_path = 'templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+
+[templates.swayosd]
+input_path = 'templates/colors.css'
+output_path = '~/.config/swayosd/colors.css'
