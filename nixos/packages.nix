@@ -89,6 +89,10 @@ in
      logseq
      gh
 
+     ollama
+     llm-ls
+     nodejs
+
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
         #!/bin/bash
