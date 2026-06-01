@@ -63,6 +63,16 @@
     layout = "us";
     variant = "";
   };
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+    environmentVariables = {
+      OLLAMA_NUM_PARALLEL = "4";
+      OLLAMA_KEEP_ALIVE = "-1";
+    };
+  };
+  programs.nix-ld.enable = true;
+
 
   # users.users.nixosvmtest = {
   #   isNormalUser = true;
