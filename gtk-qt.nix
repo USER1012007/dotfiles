@@ -56,6 +56,7 @@ in
       gtk-application-prefer-dark-theme = 1;
       gtk-cursor-theme-name = "macOS";
     };
+    gtk4.theme = null;
   };
 
 
