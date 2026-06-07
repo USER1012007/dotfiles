@@ -28,8 +28,6 @@
       gtk-application-prefer-dark-theme = 1;
     };
   };
-
-
   programs.mpv.config = {
     hwdec = "vaapi";
     hwdec-codecs = "all";
@@ -40,8 +38,8 @@
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
   xdg.configFile."waybar/config".source = ./configs/waybar/config;
   xdg.configFile."waybar/style.css".source = ./configs/waybar/style.css;
+  xdg.configFile."nvim".source = ./configs/nvim;
   # xdg.configFile."matugen/config.toml".source = ./configs/matugen/config.toml;
-
   programs.bash = {
     shellAliases = {
       ls = "ls --color=auto";
