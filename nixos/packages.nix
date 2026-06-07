@@ -59,6 +59,7 @@ in
      xdg-desktop-portal
      xdg-desktop-portal-wlr
      matugen
+     # lazyworktree
 
      # IDE's
 #    android-tools
@@ -90,6 +91,7 @@ in
      gh
 
      conda
+     github-copilot-cli
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
