@@ -73,7 +73,6 @@
   };
   programs.nix-ld.enable = true;
 
-
   # users.users.nixosvmtest = {
   #   isNormalUser = true;
   #   initialPassword = "testpassword"; # Use this to log in
@@ -81,7 +80,7 @@
   # };
   #
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     daemon.settings = {
       experimental = true;
       default-address-pools = [
@@ -117,6 +116,10 @@
   # services.terraria.openFirewall = true;
 
   programs.xwayland.enable = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
 
   fonts = {
     fontDir.enable = true;
