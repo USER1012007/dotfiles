@@ -97,6 +97,9 @@ environment {
 cursor {
      xcursor-theme "Adwaita"
      xcursor-size 22
+
+     hide-when-typing
+     hide-after-inactive-ms 3000
 }
 
  prefer-no-csd
