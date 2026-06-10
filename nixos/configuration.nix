@@ -64,7 +64,7 @@
     variant = "";
   };
   services.ollama = {
-    enable = true;
+    enable = false;
     package = pkgs.ollama-cuda;
     environmentVariables = {
       OLLAMA_NUM_PARALLEL = "4";
