@@ -191,6 +191,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id="gsimplecal"
+    open-floating true
+    default-floating-position x=0 y=20 relative-to="top"
+}
+
+window-rule {
   match app-id="waypaper"
   open-floating true
 }
