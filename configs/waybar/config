@@ -44,7 +44,8 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%e %B %I:%M %p}",
-        "on-click": "gsimplecal"
+        "on-click": "gsimplecal",
+        "tooltip": false
     },
     "battery": {
         "states": {
