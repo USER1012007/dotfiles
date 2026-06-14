@@ -84,6 +84,6 @@
             "car": "",
             "default": ["󰕿", "󰖀", "󰕾"] /* Iconos de volumen Nerdfont fluidos */
         },
-        "on-click": "pwvucontrol"
+        "on-click": "foot wiremix"
     }
 }

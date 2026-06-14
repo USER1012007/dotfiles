@@ -45,7 +45,6 @@ in
      nethogs
      yazi
      gammastep
-     pwvucontrol
      waypaper
      awww
      jq
@@ -94,6 +93,7 @@ in
      gemini-cli
      codex
      gsimplecal
+     wiremix
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
