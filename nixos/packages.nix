@@ -91,7 +91,9 @@ in
      gh
 
      conda
-     github-copilot-cli
+     gemini-cli
+     codex
+     gsimplecal
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
