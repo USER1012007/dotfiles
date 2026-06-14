@@ -63,14 +63,14 @@
     layout = "us";
     variant = "";
   };
-  services.ollama = {
-    enable = false;
-    package = pkgs.ollama-cuda;
-    environmentVariables = {
-      OLLAMA_NUM_PARALLEL = "4";
-      OLLAMA_KEEP_ALIVE = "-1";
-    };
-  };
+  # services.ollama = {
+  #   enable = false;
+  #   package = pkgs.ollama-cuda;
+  #   environmentVariables = {
+  #     OLLAMA_NUM_PARALLEL = "4";
+  #     OLLAMA_KEEP_ALIVE = "-1";
+  #   };
+  # };
   programs.nix-ld.enable = true;
 
   # users.users.nixosvmtest = {
@@ -95,7 +95,7 @@
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "input"];
     packages = with pkgs; [];
   };
 
