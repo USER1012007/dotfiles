@@ -14,6 +14,7 @@ in
 {
 
   programs.yazi = {
+    shellWrapperName = "y";
     plugins = {
       mount = pkgs.yaziPlugins.mount;
       ouch = pkgs.yaziPlugins.ouch;
@@ -99,14 +100,14 @@ in
           }
         ];
       };
-      open = {
-        prepend_rules = [
-          {
-            name = "*.zip";
-            use = "extract";
-          }
-        ];
-      };
+#      open = {
+#       prepend_rules = [
+#         {
+#           name = "*.zip";
+#           use = "extract";
+#         }
+#       ];
+#     };
       plugin = {
         prepend_previewers = [
           {
