@@ -1,8 +1,12 @@
 {pkgs, ...}: {
 
   programs.neovim = {
+
     enable = true;
-    plugins = [];
+
+    withRuby = false;
+    withPython3 = false;
+
     extraPackages = with pkgs; [
        # nvchad plugins
        ripgrep
@@ -24,14 +28,13 @@
        vimPlugins.vim-visual-multi
        vimPlugins.neoformat
        vimPlugins.nvim-jdtls
-       gopls
-       gotools 
-       delve
-       go
+
+       # golang
+       # gopls
+       # gotools 
+       # delve
+       # go
     ];
 
-    extraPython3Packages = python3Packages: with python3Packages; [
-      pynvim
-    ];
   };
 }
