@@ -37,7 +37,6 @@ in
      gcc
      # linux-wifi-hotspot
      bluez
-     lazygit
      grim
      imagemagick
      libGLU
@@ -58,7 +57,6 @@ in
      xdg-desktop-portal
      xdg-desktop-portal-wlr
      matugen
-     # lazyworktree
 
      # IDE's
 #    android-tools
@@ -93,7 +91,12 @@ in
      gemini-cli
      codex
      gsimplecal
+
+     # tuis
      wiremix
+     bluetui
+     lazygit
+     # lazyworktree
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
