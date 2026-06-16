@@ -14,25 +14,36 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8100364a-9328-4cf5-829a-5e673b64df02";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/b29e0e60-21b1-4fb1-9b92-603041abbf2e";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/b29e0e60-21b1-4fb1-9b92-603041abbf2e";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
+
+  fileSystems."/var/lib/libvirt/images" =
+    { device = "/dev/disk/by-uuid/b29e0e60-21b1-4fb1-9b92-603041abbf2e";
+      fsType = "btrfs";
+      options = [ "subvol=@vms" "compress=zstd" "noatime" "nofail" ];
+    };
+
+  fileSystems."/home/emilio/ai_storage" =
+    { device = "/dev/disk/by-uuid/b29e0e60-21b1-4fb1-9b92-603041abbf2e";
+      fsType = "btrfs";
+      options = [ "subvol=@ai" "compress=zstd:3" "noatime" "nofail" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3F07-E567";
+    { device = "/dev/disk/by-uuid/2BA5-BD2A";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

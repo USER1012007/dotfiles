@@ -1,5 +1,4 @@
 # nix-channel --add https://channels.nixos.org/nixos-unstable nixos
-
 { config, pkgs, ... }:
 
 {
@@ -8,6 +7,7 @@
       ./hardware-configuration.nix
       ./packages.nix
     ];
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
 
@@ -95,7 +95,7 @@
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "input"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "input" "libvirtd" "kvm"];
     packages = with pkgs; [];
   };
 
