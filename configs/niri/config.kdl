@@ -239,7 +239,7 @@ binds {
     Mod+Shift+return     { spawn  "gammastep" "-O" "3499";}
     Mod+return           { spawn  "pkill" "gammastep";}
    //Alt+Shift+L           { spawn  "swaylock" "-c" "222222";}
-    Alt+Shift+L           { spawn  "bash" "/home/emilio/.local/bin/swaylock-desktop-image.sh";}
+    Alt+Shift+L           { spawn  "bash" "/home/emilio/dotfiles/scripts/wayland/swaylock-desktop-image.sh";}
     Mod+Shift+W { toggle-column-tabbed-display; }
 
     // shows a list of important hotkeys.
@@ -251,6 +251,8 @@ binds {
     Super+Alt+L      { spawn "swaylock"; }
     Alt+O            { spawn "waypaper"; }
     Mod+e            { spawn  "foot" "yazi";}
+    Mod+s            { spawn  "foot" "lazyssh";}
+    Mod+b            { spawn  "foot" "bluetui";}
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+Shift+C      { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
