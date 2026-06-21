@@ -35,17 +35,16 @@ in
 
     gtk3 = {
       bookmarks = [
+        "file:///home/emilio/ai_storage/"
         "file:///home/emilio/Books/"
         "file:///home/emilio/Desktop/"
         "file:///home/emilio/Documents/"
         "file:///home/emilio/Downloads/"
         "file:///home/emilio/Languages/"
-        "file:///home/emilio/Learning/"
         "file:///home/emilio/Music/"
         "file:///home/emilio/Pictures/"
         "file:///home/emilio/usb/"
-        "file:///home/emilio/Work/"
-        "file:///home/emilio/Pictures/.wallpapers/"
+        "file:///home/emilio/work/"
       ];
       extraConfig.gtk-application-prefer-dark-theme = true;
     };
