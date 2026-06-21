@@ -68,16 +68,15 @@ button:hover {
     color: #f9e2af;
 }
 
-/* --- CONFIGURACIÓN BASE PARA MÓDULOS EN CÁPSULA --- */
+/* --- CONFIGURACIÓN BASE PARA MÓDULOS EN CÁPSULA INDEPENDIENTE --- */
+/* NOTA: Eliminamos los módulos de la píldora derecha de aquí para que no hereden márgenes indeseados */
 #clock,
-#battery,
 #cpu,
 #memory,
 #disk,
 #temperature,
 #backlight,
 #network,
-#pulseaudio,
 #wireplumber,
 #custom-media,
 #tray,
@@ -85,8 +84,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd,
-#language,
-#keyboard-state {
+#language {
     padding: 2px 10px;
     color: #cdd6f4;
     background-color: rgba(30, 30, 46, 0.6);
@@ -113,10 +111,6 @@ button:hover {
     font-weight: bold;
 }
 
-#battery {
-    margin-left: 4px;
-}
-
 /* Agrupación visual CPU + Memory (Píldora dividida) */
 #cpu {
     border-radius: 99px 0px 0px 99px;
@@ -136,47 +130,29 @@ button:hover {
 
 /* --- TASKBAR --- */
 #taskbar {
-    margin-left: 4px;
+    margin-left: 8px;
+    background-color: rgba(30, 30, 46, 0.6);
+    border-radius: 99px;
+    padding: 2px 6px;
 }
 
 #taskbar button {
-    color: #f0f0ff;
-    background-color: rgba(30, 30, 46, 0.6);
-    padding: 0 8px;
-}
-
-#taskbar button:first-child {
-    border-radius: 99px 0 0 99px;
-}
-
-#taskbar button:last-child {
-    border-radius: 0 99px 99px 0;
-}
-
-#taskbar button:first-child:last-child {
+    background-color: transparent;
     border-radius: 99px;
+    padding: 0 6px;
+    margin: 0 2px;
+}
+
+#taskbar button.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
 }
 
 #taskbar button:hover {
     background-color: rgba(49, 50, 68, 0.6);
 }
 
-#taskbar button.active {
-    background-color: rgba(110, 115, 141, 0.4);
-    box-shadow: inset 0 -2px #ffffff;
-}
-
-#taskbar button.active:hover {
-    background-color: rgba(108, 112, 134, 0.6);
-}
-
-/* --- AUDIO Y CONTROLES --- */
-#pulseaudio.muted, 
-#wireplumber.muted {
-    background-color: rgba(30, 30, 46, 0.6);
-    color: #f38ba8; /* Texto rojo/rosa suave al mutear */
-}
-
+/* --- AUDIO Y CONTROLES ESPÉCIFICOS --- */
 #temperature.critical {
     background-color: rgba(243, 139, 168, 0.4);
     color: #f38ba8;
@@ -206,38 +182,49 @@ button:hover {
 /* --- MULTIMEDIA (MPD / CUSTOM) --- */
 #mpd.disconnected,
 #mpd.stopped {
-    color: #6c7086; /* Color apagado si no hay nada */
+    color: #6c7086;
 }
 
 #mpd.paused {
     color: #a6adc8;
 }
 
-/* --- IDIOMA Y TECLADO (Consistencia con tu SwayOSD) --- */
 #language {
     min-width: 16px;
 }
 
-#keyboard-state {
-    border-radius: 15px; /* Mantiene la curvatura que tenías */
+
+/* ========================================================================= */
+/* --- NUEVA PÍLDORA UNIFICADA DE LA DERECHA (CORREGIDA CON GUION MEDIO) --- */
+/* ========================================================================= */
+
+/* 1. Grabar Pantalla (Inicio Izquierdo) - NOTA: Usa guion medio (-) */
+#custom-recorder {
+    background-color: rgba(30, 30, 46, 0.6);
+    color: #cdd6f4;
+    border-radius: 99px 0 0 99px; /* Redondeado solo a la izquierda */
+    padding: 2px 4px 2px 14px;     /* Más espacio a la izquierda para la curva */
+    margin-left: 4px;
+    margin-right: 0px;            /* Pegado al siguiente módulo */
 }
 
-#keyboard-state {
-    border-radius: 99px 0 0 99px;
-    margin-right: 0px;
-    padding-left: 12px;
-}
-#pulseaudio {
-    border-radius: 0;
-    margin-left: 0px;
-    margin-right: 0px;
+/* Estado activo: Animación roja idéntica a la batería */
+#custom-recorder.recording {
+    color: #ffffff;
+    background-color: #f38ba8;
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
-#battery {
-    border-radius: 0 99px 99px 0;
+/* 2. Caps/Num Estado (Segundo bloque, plano) */
+#keyboard-state {
+    background-color: rgba(30, 30, 46, 0.6);
+    color: #cdd6f4;
+    border-radius: 0px;           /* Completamente plano */
     margin-left: 0px;
-    padding-right: 12px;
+    margin-right: 0px;
+    padding: 2px 6px;
 }
+
 #keyboard-state > label {
     padding: 0 5px;
     transition: all 0.3s ease;
@@ -247,6 +234,30 @@ button:hover {
     color: #a6e3a1;
     font-weight: bold;
     background: transparent;
+}
+
+/* 3. Audio / Pulseaudio (Tercer bloque, plano) */
+#pulseaudio {
+    background-color: rgba(30, 30, 46, 0.6);
+    color: #cdd6f4;
+    border-radius: 0px;           /* Completamente plano */
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 2px 6px;
+}
+
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+/* 4. Batería (Fin Derecho) */
+#battery {
+    background-color: rgba(30, 30, 46, 0.6);
+    color: #cdd6f4;
+    border-radius: 0 99px 99px 0; /* Redondeado solo a la derecha */
+    margin-left: 0px;
+    margin-right: 4px;
+    padding: 2px 14px 2px 4px;     /* Más espacio a la derecha por la curva */
 }
 
 @keyframes pulse {
@@ -260,30 +271,13 @@ button:hover {
     animation: pulse 1.5s infinite ease-in-out;
 }
 
-#clock, #battery, #pulseaudio, #network, #keyboard-state, #taskbar button {
+/* --- TRANSICIONES Y HOVERS GLOBALES (CORREGIDO) --- */
+#clock, #battery, #pulseaudio, #network, #keyboard-state, #custom-recorder, #taskbar button {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #clock:hover, 
-#network:hover {
+#network:hover,
+#custom-recorder:hover {
     background-color: rgba(49, 50, 68, 0.8);
-}
-
-#taskbar {
-    margin-left: 8px;
-    background-color: rgba(30, 30, 46, 0.6);
-    border-radius: 99px;
-    padding: 2px 6px;
-}
-
-#taskbar button {
-    background-color: transparent; /* El fondo lo maneja la cápsula padre */
-    border-radius: 99px;
-    padding: 0 6px;
-    margin: 0 2px;
-}
-
-#taskbar button.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    box-shadow: none; /* Eliminamos la línea inferior tradicional para un look más moderno */
 }
