@@ -96,6 +96,7 @@ in
      wiremix
      bluetui
      lazygit
+     lazyssh
      # lazyworktree
 
      # Flatpak programs scripts
