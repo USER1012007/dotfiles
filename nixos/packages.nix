@@ -90,7 +90,6 @@ in
      conda
      gemini-cli
      codex
-     gsimplecal
 
      # tuis
      wiremix
@@ -98,6 +97,11 @@ in
      lazygit
      lazyssh
      # lazyworktree
+
+     # waybar
+     wl-screenrec
+     libnotify
+     gsimplecal
 
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
