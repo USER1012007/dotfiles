@@ -15,10 +15,20 @@
         "clock"
     ],
     "modules-right": [
+        "custom/recorder",
         "keyboard-state", 
         "pulseaudio", 
         "battery"
     ],
+
+    "custom/recorder": {
+      "format": "{} ",
+      "exec": "[ -f /tmp/wl-screenrec.pid ] && echo '{\"text\":\"\",\"class\":\"recording\",\"tooltip\":\"Detener grabación\"}' || echo '{\"text\":\"\",\"class\":\"\",\"tooltip\":\"Grabar pantalla\"}'",
+      "return-type": "json",
+      "interval": 2,
+      "on-click": "~/dotfiles/scripts/wayland/record-toggle.sh",
+      "tooltip": false
+    },
 
     "wlr/taskbar": {
         "format": "{icon}",
