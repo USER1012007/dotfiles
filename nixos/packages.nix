@@ -103,6 +103,13 @@ in
      libnotify
      gsimplecal
 
+
+     # vms
+     libvirt
+     virt-manager
+     virt-viewer
+
+     mako
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
         #!/bin/bash
