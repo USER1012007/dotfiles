@@ -5,6 +5,7 @@
     ./yazi.nix
     ./nvim.nix
     ./foot.nix
+    ./mako.nix
   ];
   home.stateVersion = "25.05";
   home.username = "emilio";
@@ -33,6 +34,7 @@
     hwdec-codecs = "all";
     gpu-api = "opengl";
   };
+
 
   xdg.configFile."Thunar/uca.xml".source = ./configs/thunar.uca.xml;
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
