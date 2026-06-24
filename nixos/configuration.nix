@@ -80,7 +80,7 @@
   # };
   #
   virtualisation.docker = {
-    enable = false;
+    enable = true;
     daemon.settings = {
       experimental = true;
       default-address-pools = [
@@ -89,6 +89,14 @@
           size = 24;
         }
       ];
+    };
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu;
+      swtpm.enable = true;
     };
   };
 
