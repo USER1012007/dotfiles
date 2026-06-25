@@ -11,7 +11,7 @@ if [ -f "$PIDFILE" ]; then
     notify-send "Grabación detenida" "Guardada en $SAVEDIR"
 else
     FILENAME="$SAVEDIR/$(date '+%Y-%m-%d_%H-%M-%S').mp4"
-    wl-screenrec -f "$FILENAME" &
+    wl-screenrec --audio -f "$FILENAME" &
     echo $! > "$PIDFILE"
     notify-send "Grabando pantalla" "$FILENAME"
 fi
