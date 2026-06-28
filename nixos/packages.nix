@@ -57,6 +57,8 @@ in
      xdg-desktop-portal
      xdg-desktop-portal-wlr
      matugen
+     eza
+     fzf
 
      # IDE's
 #    android-tools
