@@ -73,6 +73,72 @@
   # };
   programs.nix-ld.enable = true;
 
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+    promptInit = ''
+      setopt PROMPT_SUBST
+      PROMPT='%F{cyan}[%n@%m][%1~]{$(git branch --show-current 2>/dev/null)}%# %f'
+    '';
+    shellAliases = {
+      ls = "eza --icons --group-directories-first";
+      ll = "eza -l --icons --group-directories-first";
+      la = "eza -la --icons --group-directories-first";
+      grep = "grep --color=auto";
+      off = "systemctl poweroff";
+      reboot = "systemctl reboot";
+      myip = "ip a | grep '/24' | awk '{print $2}' | sed 's/\\/24//'";
+      cli = "cli-visualizer";
+      tiempo = "curl wttr.in/corregidora";
+      time = "curl wttr.in/corregidora";
+      snvim = "sudo -E nvim";
+      check = "ping www.google.com";
+      quit = "exit";
+      back = "cd $buffer";
+      hotspot = "sudo create_ap wlp4s0 enp3s0 sipo sipo1234";
+    };
+    interactiveShellInit = ''
+      export GPG_TTY="$(tty)"
+
+      # Edición de línea estilo Vim
+      bindkey -v
+      KEYTIMEOUT=10
+      autoload -Uz edit-command-line
+      zle -N edit-command-line
+      bindkey -M vicmd 'v' edit-command-line
+
+      bindkey '^[[1;5D' backward-word
+      bindkey '^[[1;5C' forward-word
+      bindkey '^H' backward-kill-word
+
+      source ${pkgs.fzf}/share/fzf/key-bindings.zsh
+      source ${pkgs.fzf}/share/fzf/completion.zsh
+
+      export NVM_DIR="$HOME/.nvm"
+      if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+        source "$NVM_DIR/nvm.sh"
+      fi
+      if [[ -s "$NVM_DIR/bash_completion" ]]; then
+        autoload -U +X bashcompinit && bashcompinit
+        source "$NVM_DIR/bash_completion"
+      fi
+    '';
+  };
+
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    DISPLAY = ":0";
+    GTK_USE_PORTAL = "1";
+    GDK_BACKEND = "wayland";
+    XDG_CURRENT_DESKTOP = "niri";
+    XDG_SESSION_TYPE = "wayland";
+    # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
+  };
+
+  environment.extraInit = ''
+    export PATH="$HOME/.cargo/bin:$PATH"
+  '';
+
   # users.users.nixosvmtest = {
   #   isNormalUser = true;
   #   initialPassword = "testpassword"; # Use this to log in
@@ -103,6 +169,7 @@
   users.users.emilio = {
     isNormalUser = true;
     description = "emilio";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "audio" "docker" "input" "libvirtd" "kvm"];
     packages = with pkgs; [];
   };
