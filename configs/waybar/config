@@ -4,11 +4,11 @@
     "margin-top": 4,
     "margin-left": 4,
     "margin-right": 4,
-    "spacing": 0, 
+    "spacing": 0,
+    "reload_style_on_change": false,
 
-    // Módulos organizados de manera limpia
     "modules-left": [
-        "network", 
+        "network",
         "wlr/taskbar"
     ],
     "modules-center": [
@@ -25,7 +25,8 @@
       "format": "{} ",
       "exec": "[ -f /tmp/wl-screenrec.pid ] && echo '{\"text\":\"\",\"class\":\"recording\",\"tooltip\":\"Detener grabación\"}' || echo '{\"text\":\"\",\"class\":\"\",\"tooltip\":\"Grabar pantalla\"}'",
       "return-type": "json",
-      "interval": 2,
+      "interval": "once",
+      "signal": 8,
       "on-click": "~/dotfiles/scripts/wayland/record-toggle.sh",
       "tooltip": false
     },
