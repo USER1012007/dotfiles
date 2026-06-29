@@ -18,6 +18,5 @@ else
     FILENAME="$SAVEDIR/$(date '+%Y-%m-%d_%H-%M-%S').mp4"
     wl-screenrec --audio -f "$FILENAME" &
     echo $! > "$PIDFILE"
-    notify-send "Grabando pantalla" "$FILENAME"
     refresh_waybar
 fi
