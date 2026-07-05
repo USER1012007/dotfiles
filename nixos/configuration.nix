@@ -12,21 +12,29 @@
   hardware.bluetooth.powerOnBoot = false;
 
   # Bootloader.
-  boot.kernelModules = [ "nvidia_uvm" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.tmp.cleanOnBoot = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    "nowatchdog"
-    "preempt=full"
-  ];
+  boot = {
+    kernelModules = [ "nvidia_uvm" ];
+    initrd.kernelModules = [ "amdgpu" ];
+    loader = {
+      systemd-boot.enable = false;
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+    };
+    tmp.cleanOnBoot = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "nowatchdog"
+      "preempt=full"
+    ];
+  };
 
   # system.autoUpgrade.enable = true;
   # system.autoUpgrade.allowReboot = true;
@@ -63,14 +71,7 @@
     layout = "us";
     variant = "";
   };
-  # services.ollama = {
-  #   enable = false;
-  #   package = pkgs.ollama-cuda;
-  #   environmentVariables = {
-  #     OLLAMA_NUM_PARALLEL = "4";
-  #     OLLAMA_KEEP_ALIVE = "-1";
-  #   };
-  # };
+
   programs.nix-ld.enable = true;
 
   programs.zsh = {
@@ -146,7 +147,7 @@
   # };
   #
   virtualisation.docker = {
-    enable = true;
+    enable = false;
     daemon.settings = {
       experimental = true;
       default-address-pools = [
@@ -159,7 +160,7 @@
   };
 
   virtualisation.libvirtd = {
-    enable = true;
+    enable = false;
     qemu = {
       package = pkgs.qemu;
       swtpm.enable = true;
@@ -303,7 +304,7 @@
 
     # Allow Avahi/mDNS only on local Wi-Fi
     interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 53317 7777 ];
-    interfaces."wlp4s0".allowedTCPPorts = [  ];
+    interfaces."wlp4s0".allowedTCPPorts = [ 53317 ];
 
     allowPing = false;
     logRefusedConnections = true;
