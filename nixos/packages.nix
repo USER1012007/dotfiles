@@ -26,7 +26,6 @@ in
      localsend
      waybar
      mpv
-     openjdk
      gnome-themes-extra
      pkg-config
      fontconfig
@@ -56,35 +55,23 @@ in
      xdg-utils
      xdg-desktop-portal
      xdg-desktop-portal-wlr
-     matugen
      eza
      fzf
 
      # IDE's
-#    android-tools
+     # android-tools
      neovim
-     # zed-editor
-
      # godot_4
      # gdtoolkit_4
 
-
      # Language servers
-
      # kotlin
      # flutter
      # rustc
      # cargo
      # ciscoPacketTracer 
      python3
-
-     # dependencies for nvchad
-     unzip
-     wl-mirror
-     rsync
-     _7zz
-     gnupg
-     pinentry-tty
+     openjdk
 
      logseq
      gh
@@ -111,7 +98,9 @@ in
      virt-manager
      virt-viewer
 
+     # notifications
      mako
+
      # Flatpak programs scripts
        (writeShellScriptBin "bedrock" ''
         #!/bin/bash
