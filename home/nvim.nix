@@ -15,10 +15,10 @@
        xclip   
 
        clang-tools
-       rust-analyzer
+       # rust-analyzer
        lua-language-server
        lombok
-       jdt-language-server
+       # jdt-language-server
        nodejs
        tree-sitter
 
@@ -27,13 +27,21 @@
        vimPlugins.plenary-nvim
        vimPlugins.vim-visual-multi
        vimPlugins.neoformat
-       vimPlugins.nvim-jdtls
+       # vimPlugins.nvim-jdtls
 
        # golang
        # gopls
        # gotools 
        # delve
        # go
+
+       # dependencies for nvchad
+       unzip
+       wl-mirror
+       rsync
+       _7zz
+       gnupg
+       pinentry-tty
     ];
 
   };
