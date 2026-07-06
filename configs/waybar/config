@@ -64,7 +64,7 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󱐋", /* Icono Nerdfont más moderno para carga */
+        "format-charging": "{capacity}% 󱐋",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -72,10 +72,10 @@
 
     "network": {
         "format-wifi": " ",
-        "format-ethernet": "󰈀", /* Icono Nerdfont actualizado */
+        "format-ethernet": "󰈀",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "",
-        "format-disconnected": "󰖪", /* Ícono sutil sin advertencias chillonas */
+        "format-disconnected": "󰖪",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
@@ -83,7 +83,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": "󰝟 {icon}",
-        "format-muted": "󰝟", /* Icono de muteo más limpio */
+        "format-muted": "󰝟",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -93,7 +93,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["󰕿", "󰖀", "󰕾"] /* Iconos de volumen Nerdfont fluidos */
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
         "on-click": "foot wiremix"
     }
