@@ -52,7 +52,7 @@ button:hover {
 }
 
 #workspaces button.focused {
-    background-color: rgba(137, 180, 250, 0.3); /* Un azul translúcido sutil */
+    background-color: rgba(137, 180, 250, 0.3);
     color: #89b4fa;
     border-radius: 99px;
 }
@@ -69,7 +69,6 @@ button:hover {
 }
 
 /* --- CONFIGURACIÓN BASE PARA MÓDULOS EN CÁPSULA INDEPENDIENTE --- */
-/* NOTA: Eliminamos los módulos de la píldora derecha de aquí para que no hereden márgenes indeseados */
 #clock,
 #cpu,
 #memory,
@@ -194,18 +193,14 @@ button:hover {
 }
 
 
-/* ========================================================================= */
-/* --- NUEVA PÍLDORA UNIFICADA DE LA DERECHA (CORREGIDA CON GUION MEDIO) --- */
-/* ========================================================================= */
-
-/* 1. Grabar Pantalla (Inicio Izquierdo) - NOTA: Usa guion medio (-) */
+/* 1. Grabar Pantalla (Inicio Izquierdo)*/
 #custom-recorder {
     background-color: rgba(30, 30, 46, 0.6);
     color: #cdd6f4;
-    border-radius: 99px 0 0 99px; /* Redondeado solo a la izquierda */
-    padding: 2px 4px 2px 14px;     /* Más espacio a la izquierda para la curva */
+    border-radius: 99px 0 0 99px;
+    padding: 2px 4px 2px 14px;
     margin-left: 4px;
-    margin-right: 0px;            /* Pegado al siguiente módulo */
+    margin-right: 0px;
 }
 
 /* Estado activo: Animación roja idéntica a la batería */
@@ -219,7 +214,7 @@ button:hover {
 #keyboard-state {
     background-color: rgba(30, 30, 46, 0.6);
     color: #cdd6f4;
-    border-radius: 0px;           /* Completamente plano */
+    border-radius: 0px;
     margin-left: 0px;
     margin-right: 0px;
     padding: 2px 6px;
@@ -250,14 +245,14 @@ button:hover {
     color: #f38ba8;
 }
 
-/* 4. Batería (Fin Derecho) */
+/* 4. Batería*/
 #battery {
     background-color: rgba(30, 30, 46, 0.6);
     color: #cdd6f4;
-    border-radius: 0 99px 99px 0; /* Redondeado solo a la derecha */
+    border-radius: 0 99px 99px 0;
     margin-left: 0px;
     margin-right: 4px;
-    padding: 2px 14px 2px 4px;     /* Más espacio a la derecha por la curva */
+    padding: 2px 14px 2px 4px;
 }
 
 @keyframes pulse {
@@ -271,7 +266,6 @@ button:hover {
     animation: pulse 1.5s infinite ease-in-out;
 }
 
-/* --- TRANSICIONES Y HOVERS GLOBALES (CORREGIDO) --- */
 #clock, #battery, #pulseaudio, #network, #keyboard-state, #custom-recorder, #taskbar button {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
