@@ -20,6 +20,7 @@
        lombok
        # jdt-language-server
        nodejs
+       yarn
        tree-sitter
 
        # vim plugins
@@ -27,6 +28,7 @@
        vimPlugins.plenary-nvim
        vimPlugins.vim-visual-multi
        vimPlugins.neoformat
+       vimPlugins.markdown-preview-nvim
        # vimPlugins.nvim-jdtls
 
        # golang
