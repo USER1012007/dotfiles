@@ -1,3 +1,5 @@
 .direnv/
 __pycache__/
 *.txt
+*.lock
+nvim/
