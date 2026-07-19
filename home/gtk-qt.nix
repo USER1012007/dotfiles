@@ -1,4 +1,4 @@
-{lib, pkgs, ...}: 
+{ lib, pkgs, ... }:
 
 let
   catppuccinAccent = "lavender";
@@ -19,11 +19,11 @@ in
 
     theme = {
       name = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}-standard";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["${lib.toLower catppuccinAccent}"];
-        size = "standard";
-        variant = "${lib.toLower catppuccinFlavor}";
-      };
+      # package = pkgs.catppuccin-gtk.override {
+      #   accents = [ "${lib.toLower catppuccinAccent}" ];
+      #   size = "standard";
+      #   variant = "${lib.toLower catppuccinFlavor}";
+      # };
     };
     iconTheme = {
       name = "Papirus";
@@ -57,7 +57,6 @@ in
     };
     gtk4.theme = null;
   };
-
 
   qt = {
     enable = true;
