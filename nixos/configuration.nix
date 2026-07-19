@@ -2,11 +2,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./packages.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./packages.nix
+  ];
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
@@ -60,9 +59,9 @@
     };
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  networking.hostName = "user1012007"; 
+  networking.hostName = "user1012007";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Mexico_City";
@@ -147,7 +146,7 @@
   # };
   #
   virtualisation.docker = {
-    enable = false;
+    enable = true;
     daemon.settings = {
       experimental = true;
       default-address-pools = [
@@ -171,17 +170,28 @@
     isNormalUser = true;
     description = "emilio";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" "input" "libvirtd" "kvm"];
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "docker"
+      "input"
+      "libvirtd"
+      "kvm"
+    ];
+    packages = with pkgs; [ ];
   };
 
   nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.permittedInsecurePackages = [
   #    "libxml2-2.13.8"
   # ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-# Steam configurations
+  # Steam configurations
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -205,8 +215,8 @@
     packages = with pkgs; [
       fira-code
       fira-code-symbols
-      noto-fonts         
-      liberation_ttf     
+      noto-fonts
+      liberation_ttf
       dejavu_fonts
       font-awesome
       nerd-fonts.caskaydia-mono
@@ -222,7 +232,7 @@
     });
   '';
 
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
   # services.printing.enable = true;
   #services.printing.drivers = [ pkgs.epson-escpr2 ];
   services.avahi = {
@@ -241,7 +251,10 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
     config = {
       common.default = [ "gtk" ];
       niri = {
@@ -292,7 +305,10 @@
 
     # No open ports to the internet by default
     allowedTCPPorts = [ 7777 ];
-    allowedUDPPorts = [ 7777 9993 ];
+    allowedUDPPorts = [
+      7777
+      9993
+    ];
 
     # Allow addresses to conect into specific ports
     # allowedTCPConnections = [
@@ -303,7 +319,13 @@
     # ];
 
     # Allow Avahi/mDNS only on local Wi-Fi
-    interfaces."wlp4s0".allowedUDPPorts = [ 5353 45259 34445 53317 7777 ];
+    interfaces."wlp4s0".allowedUDPPorts = [
+      5353
+      45259
+      34445
+      53317
+      7777
+    ];
     interfaces."wlp4s0".allowedTCPPorts = [ 53317 ];
 
     allowPing = false;
