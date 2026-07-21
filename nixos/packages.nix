@@ -88,6 +88,7 @@ in
     bluetui
     lazygit
     lazyssh
+    lazydocker
     # lazyworktree
 
     # waybar
