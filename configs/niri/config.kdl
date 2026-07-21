@@ -252,6 +252,7 @@ binds {
     Mod+e            { spawn  "foot" "yazi";}
     Mod+s            { spawn  "foot" "lazyssh";}
     Mod+b            { spawn  "foot" "bluetui";}
+    Mod+d            { spawn  "foot" "lazydocker";}
     Mod+Escape repeat=false { toggle-overview; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+Shift+C      { spawn "sh" "-c" "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
