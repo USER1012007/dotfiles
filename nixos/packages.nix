@@ -15,7 +15,7 @@ in
     # thunar-volman
     pipewire
     xwayland-satellite
-    htop
+    btop
     foot
     clang
     wl-clipboard
@@ -92,7 +92,7 @@ in
     # lazyworktree
 
     # waybar
-    wl-screenrec
+    wf-recorder
     libnotify
     gsimplecal
 
@@ -100,6 +100,8 @@ in
     libvirt
     virt-manager
     virt-viewer
+
+    exiftool
 
     # notifications
     mako
