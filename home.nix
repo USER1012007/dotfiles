@@ -35,6 +35,7 @@
     GDK_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
+    # MY_SINK = "$(wpctl inspect @DEFAULT_AUDIO_SINK@ | awk -F'\"' '/node.name/ {print $2}')";
     # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
   };
 
@@ -51,7 +52,6 @@
     hwdec-codecs = "all";
     gpu-api = "opengl";
   };
-
 
   xdg.configFile."niri/config.kdl".source = ./configs/niri/config.kdl;
   xdg.configFile."nvim".source = ./configs/nvim;
