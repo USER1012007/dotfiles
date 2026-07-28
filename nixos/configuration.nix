@@ -1,6 +1,5 @@
 # nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 { config, pkgs, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,7 +11,9 @@
 
   # Bootloader.
   boot = {
-    kernelModules = [ "nvidia_uvm" ];
+    kernelModules = [
+      "nvidia_uvm"
+    ];
     initrd.kernelModules = [ "amdgpu" ];
     loader = {
       systemd-boot.enable = false;
@@ -72,7 +73,6 @@
   };
 
   programs.nix-ld.enable = true;
-
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -132,6 +132,7 @@
     GDK_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
+    MY_SINK = "$(wpctl inspect @DEFAULT_AUDIO_SINK@ | awk -F'\"' '/node.name/ {print $2}')";
     # DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
   };
 
@@ -178,6 +179,7 @@
       "input"
       "libvirtd"
       "kvm"
+      "dialout"
     ];
     packages = with pkgs; [ ];
   };
@@ -193,7 +195,7 @@
 
   # Steam configurations
   programs.steam = {
-    enable = true;
+    enable = false;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
@@ -247,8 +249,6 @@
   };
 
   services.dbus.enable = true;
-  xdg.portal.wlr.enable = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = [
