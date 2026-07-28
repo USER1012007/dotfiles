@@ -12,15 +12,12 @@
       ignoreDups = true;
       share = true;
     };
-
+    initContent = ''
+      export MY_SINK=$(wpctl inspect @DEFAULT_AUDIO_SINK@ | awk -F'"' '/node.name/ {print $2}')
+    '';
     completionInit = ''
-      # Asegura que el motor se inicialice correctamente en el orden correcto
       autoload -Uz compinit && compinit
-
-      # DIFERENCIA VISUAL: Convierte la lista en un menú interactivo
       zstyle ':completion:*' menu select
-
-      # DIFERENCIA DE CASOS: Ignora mayúsculas/minúsculas al autocompletar
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
     '';
   };
