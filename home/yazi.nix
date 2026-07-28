@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 let
   yazi-flavors = pkgs.fetchFromGitHub {
     owner = "yazi-rs";
@@ -49,18 +49,21 @@ in
           desc = "Compress with ouch";
         }
         {
-          on   = [ "g" "i" ];
-          run  = "plugin lazygit";
+          on = [
+            "g"
+            "i"
+          ];
+          run = "plugin lazygit";
           desc = "run lazygit";
         }
         {
-          on   = [ "e" ];
-          run  = "shell --orphan --confirm foot";
+          on = [ "e" ];
+          run = "shell --orphan --confirm foot";
           desc = "run foot terminal";
         }
         {
-          on   = [ "u" ];
-          run  = "shell --orphan --confirm 'foot yazi'";
+          on = [ "u" ];
+          run = "shell --orphan --confirm 'foot yazi'";
           desc = "run yazi";
         }
         {
@@ -94,20 +97,20 @@ in
         ];
         extract = [
           {
-            run = "unzip \"$@\"";
+            run = "ouch d \"$@\"";
             desc = "Extract here with unzip";
             for = "unix";
           }
         ];
       };
-#      open = {
-#       prepend_rules = [
-#         {
-#           name = "*.zip";
-#           use = "extract";
-#         }
-#       ];
-#     };
+      #      open = {
+      #       prepend_rules = [
+      #         {
+      #           name = "*.zip";
+      #           use = "extract";
+      #         }
+      #       ];
+      #     };
       plugin = {
         prepend_previewers = [
           {
