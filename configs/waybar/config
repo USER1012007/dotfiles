@@ -22,13 +22,12 @@
     ],
 
     "custom/recorder": {
-      "format": "{} ",
-      "exec": "[ -f /tmp/wl-screenrec.pid ] && echo '{\"text\":\"\",\"class\":\"recording\",\"tooltip\":\"Detener grabación\"}' || echo '{\"text\":\"\",\"class\":\"\",\"tooltip\":\"Grabar pantalla\"}'",
+      "format": "{}",
+      "exec": "pgrep -x wf-recorder >/dev/null && echo '{\"text\":\" \",\"class\":\"recording\",\"tooltip\":\"Detener grabación\"}' || echo '{\"text\":\" \",\"class\":\"stopped\",\"tooltip\":\"Grabar pantalla\"}'",
       "return-type": "json",
       "interval": "once",
       "signal": 8,
-      "on-click": "~/dotfiles/scripts/wayland/record-toggle.sh",
-      "tooltip": false
+      "on-click": "~/dotfiles/scripts/wayland/record-toggle.sh"
     },
 
     "wlr/taskbar": {
@@ -74,7 +73,7 @@
         "format-wifi": " ",
         "format-ethernet": "󰈀",
         "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "",
+        "format-linked": " ",
         "format-disconnected": "󰖪",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },

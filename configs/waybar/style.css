@@ -203,13 +203,26 @@ button:hover {
     margin-right: 0px;
 }
 
-/* Estado activo: Animación roja idéntica a la batería */
+/* Estado activo: Aplica la animación */
 #custom-recorder.recording {
-    color: #ffffff;
-    background-color: #f38ba8;
     animation: pulse 1.5s infinite ease-in-out;
 }
 
+/* Animación de parpadeo (Blink / Pulse) */
+@keyframes pulse {
+    0% {
+        background-color: #f38ba8;
+        color: #ffffff;
+    }
+    50% {
+        background-color: rgba(30, 30, 46, 0.8);
+        color: #f38ba8;
+    }
+    100% {
+        background-color: #f38ba8;
+        color: #ffffff;
+    }
+}
 /* 2. Caps/Num Estado (Segundo bloque, plano) */
 #keyboard-state {
     background-color: rgba(30, 30, 46, 0.6);
