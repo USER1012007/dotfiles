@@ -106,6 +106,7 @@ in
     # notifications
     mako
 
+    eden
     # Flatpak programs scripts
     (writeShellScriptBin "bedrock" ''
       #!/bin/bash
