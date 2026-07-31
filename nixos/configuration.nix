@@ -146,6 +146,7 @@
   #   extraGroups = [ "wheel" ]; # Allows sudo access
   # };
   #
+
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
@@ -195,7 +196,7 @@
 
   # Steam configurations
   programs.steam = {
-    enable = false;
+    enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
@@ -331,6 +332,5 @@
     allowPing = false;
     logRefusedConnections = true;
   };
-
   system.stateVersion = "24.05";
 }
