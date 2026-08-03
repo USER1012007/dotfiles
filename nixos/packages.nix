@@ -22,7 +22,7 @@ in
     wlr-randr
     gvfs
     qalculate-gtk
-    # libreoffice
+    libreoffice-fresh
     localsend
     waybar
     mpv
@@ -49,7 +49,6 @@ in
     jaq
     ffmpeg
     cmus
-    kdePackages.okular
     direnv
     ouch
     xdg-utils
@@ -58,11 +57,7 @@ in
     eza
     fzf
 
-    # IDE's
-    # android-tools
     neovim
-    # godot_4
-    # gdtoolkit_4
 
     # Language servers
     # kotlin
@@ -78,9 +73,7 @@ in
 
     conda
 
-    # agents
     gemini-cli
-    # codex
     opencode
 
     # tuis
@@ -89,24 +82,23 @@ in
     lazygit
     lazyssh
     lazydocker
-    # lazyworktree
 
     # waybar
     wf-recorder
     libnotify
     gsimplecal
 
-    # vms
     libvirt
     virt-manager
     virt-viewer
 
     exiftool
-
-    # notifications
     mako
-
     eden
+
+    kdePackages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
+
     # Flatpak programs scripts
     (writeShellScriptBin "bedrock" ''
       #!/bin/bash
