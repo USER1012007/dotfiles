@@ -102,15 +102,27 @@ in
             for = "unix";
           }
         ];
+        nomacs = [
+          {
+            run = "nomacs \"$@\"";
+            orphan = true;
+            desc = "Extract here with unzip";
+            for = "unix";
+          }
+        ];
       };
-      #      open = {
-      #       prepend_rules = [
-      #         {
-      #           name = "*.zip";
-      #           use = "extract";
-      #         }
-      #       ];
-      #     };
+      # open = {
+      #   prepend_rules = [
+      #     {
+      #       name = "*.zip";
+      #       use = "extract";
+      #     }
+      #     {
+      #       mime = "image/*";
+      #       use = [ "nomacs" ];
+      #     }
+      #   ];
+      # };
       plugin = {
         prepend_previewers = [
           {
