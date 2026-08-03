@@ -4,12 +4,15 @@ let
   catppuccinAccent = "lavender";
   catppuccinFlavor = "Mocha";
 
-  catppuccinKvantum = pkgs.catppuccin-kvantum.override {
-    accent = "${lib.toLower catppuccinAccent}";
-    variant = "${lib.toLower catppuccinFlavor}";
-  };
+  # catppuccinKvantum = pkgs.catppuccin-kvantum.override {
+  #   accent = "${lib.toLower catppuccinAccent}";
+  #   variant = "${lib.toLower catppuccinFlavor}";
+  # };
 
-  qtThemeName = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}";
+  # catppuccinKvantum = pkgs.catppuccin-kvantum.override {
+  #   accent = "${lib.toLower catppuccinAccent}";
+  #   variant = "${lib.toLower catppuccinFlavor}";
+  # };
 in
 
 {
@@ -18,13 +21,10 @@ in
     enable = true;
 
     theme = {
-      name = "catppuccin-${lib.toLower catppuccinFlavor}-${lib.toLower catppuccinAccent}-standard";
-      # package = pkgs.catppuccin-gtk.override {
-      #   accents = [ "${lib.toLower catppuccinAccent}" ];
-      #   size = "standard";
-      #   variant = "${lib.toLower catppuccinFlavor}";
-      # };
+      name = "adw-gtk3";
+      package = pkgs.adw-gtk3;
     };
+
     iconTheme = {
       name = "Papirus";
       package = pkgs.catppuccin-papirus-folders.override {
@@ -34,12 +34,14 @@ in
     };
 
     gtk3 = {
+
       bookmarks = [
         "file:///home/emilio/ai_storage/"
         "file:///home/emilio/Books/"
         "file:///home/emilio/Desktop/"
         "file:///home/emilio/Documents/"
         "file:///home/emilio/Downloads/"
+        "file:///home/emilio/Games/"
         "file:///home/emilio/Languages/"
         "file:///home/emilio/Music/"
         "file:///home/emilio/Pictures/"
@@ -50,6 +52,7 @@ in
     };
 
     gtk4.extraConfig = {
+
       gtk-icon-theme-name = "Adwaita";
       gtk-theme-name = "Adwaita-dark";
       gtk-application-prefer-dark-theme = 1;
@@ -61,6 +64,6 @@ in
   qt = {
     enable = true;
     platformTheme.name = "qtct";
-    style.name = "kvantum";
+    # style.name = "";
   };
 }
