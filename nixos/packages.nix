@@ -34,7 +34,7 @@ in
     nomacs
     swaylock
     gcc
-    # linux-wifi-hotspot
+    linux-wifi-hotspot
     bluez
     grim
     imagemagick
@@ -95,6 +95,7 @@ in
     exiftool
     mako
     eden
+    wl-mirror
 
     kdePackages.qtstyleplugin-kvantum
     libsForQt5.qtstyleplugin-kvantum
