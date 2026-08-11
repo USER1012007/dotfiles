@@ -1,4 +1,4 @@
-{...}:{
+{ ... }: {
 
   programs.foot.settings = {
     main = {
