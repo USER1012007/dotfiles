@@ -126,6 +126,8 @@ def search_queries(track: Track) -> list[str]:
 
 def cookie_args() -> list[str]:
     cookie_file = Path("./cookies.txt")
+    if not cookie_file.is_file():
+        print("[!] No se encontró cookies.txt. Algunas descargas pueden fallar.", file=sys.stderr)
     return ["--cookies", str(cookie_file)] if cookie_file.is_file() else []
 
 
