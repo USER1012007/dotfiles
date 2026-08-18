@@ -67,6 +67,9 @@ in
     # ciscoPacketTracer
     python3
     openjdk
+    android-studio
+    androidsdk
+    android-tools
 
     logseq
     gh
