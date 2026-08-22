@@ -29,7 +29,7 @@
       };
     };
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_7_1;
     kernelParams = [
       "nowatchdog"
       "preempt=full"
@@ -51,7 +51,7 @@
     powerManagement.finegrained = true;
     nvidiaSettings = true;
     nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
@@ -61,7 +61,6 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
   networking.hostName = "user1012007";
   networking.networkmanager.enable = true;
 
@@ -186,7 +185,11 @@
     packages = with pkgs; [ ];
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    android_sdk.accept_license = true;
+  };
+
   # nixpkgs.config.permittedInsecurePackages = [
   #    "libxml2-2.13.8"
   # ];
