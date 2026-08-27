@@ -70,6 +70,7 @@ in
     android-studio
     androidsdk
     android-tools
+    rstudio
 
     logseq
     gh
