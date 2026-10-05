@@ -29,7 +29,7 @@
       };
     };
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_7_1;
+    kernelPackages = pkgs.linuxPackages;
     kernelParams = [
       "nowatchdog"
       "preempt=full"
@@ -51,7 +51,7 @@
     powerManagement.finegrained = true;
     nvidiaSettings = true;
     nvidiaPersistenced = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
       offload.enable = true;
       offload.enableOffloadCmd = true;
@@ -193,6 +193,7 @@
   # nixpkgs.config.permittedInsecurePackages = [
   #    "libxml2-2.13.8"
   # ];
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -211,7 +212,7 @@
   programs.xwayland.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
+    "electron-41.10.7"
   ];
 
   fonts = {
@@ -304,6 +305,23 @@
       ];
     };
   };
+
+  # networking = {
+  #   useDHCP = false;
+  #   interfaces.enp3s0 = {
+  #     ipv4.addresses = [
+  #       {
+  #         address = "192.168.1.104";
+  #         prefixLength = 24;
+  #       }
+  #     ];
+  #   };
+  #   defaultGateway = "192.168.1.1";
+  #   nameservers = [
+  #     "192.168.1.1"
+  #     "8.8.8.8"
+  #   ];
+  # };
 
   networking.firewall = {
     enable = true;
