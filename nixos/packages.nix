@@ -60,25 +60,29 @@ in
     neovim
 
     # Language servers
+
     # kotlin
     # flutter
     # rustc
     # cargo
     # ciscoPacketTracer
+
     python3
     openjdk
-    android-studio
-    androidsdk
-    android-tools
+
+    # android-studio
+    # androidsdk
+    # android-tools
+
     rstudio
 
-    logseq
+    # logseq
     gh
 
     conda
 
     gemini-cli
-    opencode
+    # opencode
 
     # tuis
     wiremix
