@@ -375,7 +375,7 @@ binds {
     // Mod+Ctrl+1 { move-window-to-workspace 1; }
 
     // Switches focus between the current and the previous workspace.
-    Alt+Tab { focus-workspace-previous; }
+    Alt+Tab repeat=false { focus-workspace-previous; }
     Mod+Shift+V { toggle-window-floating; }
     Mod+V { switch-focus-between-floating-and-tiling; }
     Mod+Comma  { consume-window-into-column; }
