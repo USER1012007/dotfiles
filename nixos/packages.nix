@@ -9,7 +9,7 @@ in
   environment.systemPackages = with pkgs; [
     git
     niri
-    fastfetch
+    fetch
     firefox
     # thunar
     # thunar-volman
