@@ -9,7 +9,7 @@ in
   environment.systemPackages = with pkgs; [
     git
     niri
-    fetch
+    fastfetch
     firefox
     # thunar
     # thunar-volman
@@ -51,6 +51,7 @@ in
     cmus
     direnv
     ouch
+    unzip
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-wlr
