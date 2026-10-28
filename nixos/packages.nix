@@ -30,7 +30,7 @@ in
     pkg-config
     fontconfig
     kickoff
-    swayosd
+    # swayosd
     nomacs
     swaylock
     gcc
@@ -105,6 +105,9 @@ in
     mako
     eden
     wl-mirror
+
+    noctalia
+    upower
 
     kdePackages.qtstyleplugin-kvantum
     libsForQt5.qtstyleplugin-kvantum
